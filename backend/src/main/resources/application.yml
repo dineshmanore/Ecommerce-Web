@@ -3,7 +3,7 @@ spring:
     name: ecommerce-backend
   data:
     mongodb:
-      uri: mongodb://localhost:27017/smartcart
+      uri: mongodb+srv://Dinesh:<db_password>@cluster0.5gaccml.mongodb.net/?appName=Cluster0
       database: ecommerce
 
 server:

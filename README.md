@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🛒 E-Commerce Platform
 
 A modern Full-Stack E-Commerce Website built with **Spring Boot 3** and **React**.
@@ -73,3 +74,6 @@ VITE_API_URL=http://localhost:8080/api
 MIT License
 
 <p align="center">Built with ❤️ by Dinesh Manore</p>
+=======
+# Ecommerce-Web
+>>>>>>> 900593a3ff14d2a3e24d709a6b14aff37304df93
