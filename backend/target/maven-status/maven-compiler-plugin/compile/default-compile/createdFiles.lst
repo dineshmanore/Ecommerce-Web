@@ -30,6 +30,7 @@ com\ecommerce\controller\WishlistController$AddToWishlistRequest.class
 com\ecommerce\dto\request\OrderRequest$ShippingAddressDto.class
 com\ecommerce\dto\response\AuthResponse$AuthResponseBuilder.class
 com\ecommerce\model\Order.class
+com\ecommerce\controller\TestController.class
 com\ecommerce\dto\response\ApiResponse.class
 com\ecommerce\model\Payment$PaymentStatus.class
 com\ecommerce\service\CategoryService.class

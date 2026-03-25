@@ -25,6 +25,7 @@ C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\e
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\dto\response\UserResponse.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\controller\AuthController.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\dto\response\PageResponse.java
+C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\controller\TestController.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\controller\OrderController.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\model\Product.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\controller\CartController.java
@@ -43,6 +44,7 @@ C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\e
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\repository\ReviewRepository.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\config\MongoConfig.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\dto\request\CategoryRequest.java
+C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\config\CorsConfig.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\controller\AdminController.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\service\OrderService.java
 C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\main\java\com\ecommerce\dto\response\ProductResponse.java

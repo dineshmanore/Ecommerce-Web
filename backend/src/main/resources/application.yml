@@ -4,7 +4,6 @@ spring:
   data:
     mongodb:
       uri: ${MONGO_URI}
-      database: ecommerce
 
 server:
   port: ${PORT:8080}
