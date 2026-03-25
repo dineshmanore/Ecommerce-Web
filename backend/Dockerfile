@@ -6,7 +6,7 @@ COPY mvnw mvnw
 COPY pom.xml .
 COPY src src
 RUN chmod +x mvnw
-RUN ./mvnw clean install -DskipTests
+RUN mvn clean install -DskipTests
 
 # Stage 2: Runtime
 FROM eclipse-temurin:17-jre-jammy
