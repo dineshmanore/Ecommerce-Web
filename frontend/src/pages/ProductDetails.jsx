@@ -278,7 +278,15 @@ export default function ProductDetails() {
           {activeTab === 'description' && (
             <div className="prose dark:prose-invert max-w-none">
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                {product.description || 'No description available for this product.'}
+                {product.description ? (
+                 <ul className="list-disc pl-5 space-y-2">
+                 {product.description.split('||').map((item, i) => (
+                 <li key={i}>{item.trim()}</li>
+                ))}
+               </ul>
+              ) : (
+               <p>No description available</p>
+              )}
               </p>
             </div>
           )}
