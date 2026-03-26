@@ -71,15 +71,17 @@ export default function Checkout() {
     }
 
     // ✅ ONLINE PAYMENT (Razorpay)
-    const res = await fetch("http://localhost:8080/api/payment/create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ amount: total })
-    });
+      const API = import.meta.env.VITE_API_URL;
 
-    const order = await res.json();
+      const res = await fetch(`${API}/payment/create-order`, {
+        method: "POST",
+        headers: {
+         "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ amount: total })
+      });
+
+       const order = await res.json();
 
     const options = {
       key: "rzp_test_SV1Di4AUXyJL8e",

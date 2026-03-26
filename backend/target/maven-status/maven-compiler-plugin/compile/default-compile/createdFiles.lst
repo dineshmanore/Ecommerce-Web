@@ -43,6 +43,7 @@ com\ecommerce\service\UserService.class
 com\ecommerce\dto\request\LoginRequest.class
 com\ecommerce\dto\request\ProductRequest.class
 com\ecommerce\model\Review$ReviewBuilder.class
+com\ecommerce\config\CorsConfig.class
 com\ecommerce\dto\response\CartResponse$CartItemDto$CartItemDtoBuilder.class
 com\ecommerce\dto\response\ProductResponse$ProductSpecsDto$ProductSpecsDtoBuilder.class
 com\ecommerce\dto\response\ProductResponse.class
@@ -71,6 +72,7 @@ com\ecommerce\controller\WishlistController.class
 com\ecommerce\model\Product$ProductSpecs.class
 com\ecommerce\model\Cart$CartBuilder.class
 com\ecommerce\service\CartService.class
+com\ecommerce\config\CorsConfig$1.class
 com\ecommerce\repository\ReviewRepository.class
 com\ecommerce\model\Review.class
 com\ecommerce\controller\AuthController.class

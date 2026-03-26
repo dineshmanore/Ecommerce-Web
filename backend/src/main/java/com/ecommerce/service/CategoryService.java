@@ -21,13 +21,14 @@ public class CategoryService {
     private final ProductRepository productRepository;
     
     public List<CategoryResponse> getAllCategories() {
+        System.out.println("COUNT ="+categoryRepository.count());
         return categoryRepository.findAll().stream()
                 .map(CategoryResponse::fromCategory)
                 .collect(Collectors.toList());
     }
     
     public List<CategoryResponse> getRootCategories() {
-        return categoryRepository.findByParentIdIsNullAndActiveTrue().stream()
+        return categoryRepository.findByActiveTrue().stream()
                 .map(CategoryResponse::fromCategory)
                 .collect(Collectors.toList());
     }
