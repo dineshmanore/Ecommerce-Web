@@ -125,11 +125,17 @@ export default function ProductForm() {
     setIsLoading(true);
 
     try {
+      const formattedDescription = formData.description
+       .split('||')
+       .map(item => item.trim())
+       .join('||');
+
       const data = {
-        ...formData,
-        price: parseFloat(formData.price),
-        discountPrice: formData.discountPrice ? parseFloat(formData.discountPrice) : null,
-        stockQuantity: parseInt(formData.stockQuantity),
+       ...formData,
+       description: formattedDescription,
+       price: parseFloat(formData.price),
+       discountPrice: formData.discountPrice ? parseFloat(formData.discountPrice) : null,
+       stockQuantity: parseInt(formData.stockQuantity),
       };
 
       if (isEditing) {
@@ -304,20 +310,55 @@ export default function ProductForm() {
          <h2 className="text-lg font-semibold mb-6">Specifications</h2>
 
          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-           <input placeholder="Weight" className="input-field"
-             onChange={(e)=>setFormData({...formData, specs:{...formData.specs, weight:e.target.value}})} />
+           <input
+  placeholder="Weight"
+  className="input-field"
+  value={formData.specs.weight}
+  onChange={(e)=>setFormData({
+    ...formData,
+    specs:{...formData.specs, weight:e.target.value}
+  })}
+/>
 
-           <input placeholder="Dimensions" className="input-field"
-             onChange={(e)=>setFormData({...formData, specs:{...formData.specs, dimensions:e.target.value}})} />
+<input
+  placeholder="Dimensions"
+  className="input-field"
+  value={formData.specs.dimensions}
+  onChange={(e)=>setFormData({
+    ...formData,
+    specs:{...formData.specs, dimensions:e.target.value}
+  })}
+/>
 
-          <input placeholder="Color" className="input-field"
-             onChange={(e)=>setFormData({...formData, specs:{...formData.specs, color:e.target.value}})} />
+<input
+  placeholder="Color"
+  className="input-field"
+  value={formData.specs.color}
+  onChange={(e)=>setFormData({
+    ...formData,
+    specs:{...formData.specs, color:e.target.value}
+  })}
+/>
 
-          <input placeholder="Material" className="input-field"
-             onChange={(e)=>setFormData({...formData, specs:{...formData.specs, material:e.target.value}})} />
+<input
+  placeholder="Material"
+  className="input-field"
+  value={formData.specs.material}
+  onChange={(e)=>setFormData({
+    ...formData,
+    specs:{...formData.specs, material:e.target.value}
+  })}
+/>
 
-          <input placeholder="Warranty" className="input-field"
-             onChange={(e)=>setFormData({...formData, specs:{...formData.specs, warranty:e.target.value}})} />
+<input
+  placeholder="Warranty"
+  className="input-field"
+  value={formData.specs.warranty}
+  onChange={(e)=>setFormData({
+    ...formData,
+    specs:{...formData.specs, warranty:e.target.value}
+  })}
+/>
          </div>
        </div>
          
@@ -342,6 +383,7 @@ export default function ProductForm() {
       ...formData,
       reviews:[{
         user:"Admin",
+        verified:true,
         rating: formData.averageRating,
         comment:e.target.value
       }]
