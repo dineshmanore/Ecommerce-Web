@@ -32,7 +32,11 @@ export default function ProductDetails() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('description');
   const [isInWishlistState, setIsInWishlistState] = useState(false);
-
+  
+  useEffect(() =>{
+        console.log("PRODUCT:",product);
+      },[product]);
+      
   useEffect(() => {
     const fetchProduct = async () => {
       setIsLoading(true);
