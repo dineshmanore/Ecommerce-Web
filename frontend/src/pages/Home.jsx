@@ -53,7 +53,7 @@ export default function Home() {
       <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-slide-up">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
               Discover Amazing Products
             </h1>
             <p className="text-lg md:text-xl text-primary-100 mb-8 animate-slide-up">

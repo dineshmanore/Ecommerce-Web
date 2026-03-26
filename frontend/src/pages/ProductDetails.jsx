@@ -110,10 +110,10 @@ export default function ProductDetails() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Image Gallery */}
         <div>
-          <div className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden mb-4">
+          <div className="h-56 sm:h-72 bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden mb-4">
             <img
               src={product.images?.[selectedImage] || 'https://via.placeholder.com/600'}
               alt={product.name}
@@ -121,14 +121,12 @@ export default function ProductDetails() {
             />
           </div>
           {product.images?.length > 1 && (
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-2">
               {product.images.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImage(index)}
-                  className={`aspect-square rounded-lg overflow-hidden border-2 transition-colors ${
-                    selectedImage === index ? 'border-primary-600' : 'border-transparent'
-                  }`}
+                  className="aspect-square rounded-lg overflow-hidden border-2" 
                 >
                   <img src={image} alt="" className="w-full h-full object-cover" />
                 </button>
@@ -140,7 +138,7 @@ export default function ProductDetails() {
         {/* Product Info */}
         <div>
           <p className="text-primary-600 font-medium mb-2">{product.categoryName}</p>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
             {product.name}
           </h1>
           
@@ -156,7 +154,7 @@ export default function ProductDetails() {
           <div className="flex items-center gap-4 mb-6">
             {product.discountPrice ? (
               <>
-                <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
                   ₹{product.discountPrice.toLocaleString()}
                 </span>
                 <span className="text-xl text-gray-500 line-through">
@@ -167,7 +165,7 @@ export default function ProductDetails() {
                 </span>
               </>
             ) : (
-              <span className="text-3xl font-bold text-gray-900 dark:text-white">
+              <span className="text-xl  font-bold text-gray-900 dark:text-white">
                 ₹{product.price.toLocaleString()}
               </span>
             )}
@@ -212,7 +210,7 @@ export default function ProductDetails() {
           </div>
 
           {/* Actions */}
-          <div className="flex gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row gap-3 mb-8">
             <button
               onClick={handleAddToCart}
               disabled={cartLoading || product.stockQuantity === 0}
@@ -235,7 +233,7 @@ export default function ProductDetails() {
           </div>
 
           {/* Features */}
-          <div className="grid grid-cols-3 gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
+          <div className="grid grid-cols-3 gap-2 text-xs sm:text-sm p-4 bg-gray-50 dark:bg-gray-800 rounded-xl">
             <div className="text-center">
               <TruckIcon className="h-6 w-6 mx-auto mb-2 text-primary-600" />
               <p className="text-sm text-gray-600 dark:text-gray-400">Free Delivery</p>
@@ -255,7 +253,7 @@ export default function ProductDetails() {
       {/* Tabs */}
       <div className="mt-16">
         <div className="border-b dark:border-gray-700">
-          <div className="flex gap-8">
+          <div className="flex gap-4 overflow-x-auto">
             {['description', 'specifications', 'reviews'].map((tab) => (
               <button
                 key={tab}

@@ -17,7 +17,6 @@ export default function ProductCard({ product, showQuickView = true }) {
   const { isAuthenticated } = useAuthStore();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlistStore();
   const navigate = useNavigate();
-  const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
 
@@ -56,9 +55,9 @@ export default function ProductCard({ product, showQuickView = true }) {
     
     for (let i = 0; i < 5; i++) {
       if (i < fullStars) {
-        stars.push(<StarIconSolid key={i} className="h-3.5 w-3.5 text-yellow-400" />);
+        stars.push(<StarIconSolid key={i} className="h-3 w-3 text-yellow-400" />);
       } else {
-        stars.push(<StarIcon key={i} className="h-3.5 w-3.5 text-gray-300 dark:text-gray-600" />);
+        stars.push(<StarIcon key={i} className="h-3 w-3 text-gray-300 dark:text-gray-600" />);
       }
     }
     return stars;
@@ -75,12 +74,10 @@ export default function ProductCard({ product, showQuickView = true }) {
     <Link 
       to={`/products/${product.id}`} 
       className="group block"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="card-hover overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm">
         {/* Image Container */}
-        <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-700 overflow-hidden">
+        <div className="relative h-40 sm:h-48 bg-gray-100 dark:bg-gray-800 overflow-hidden">
           {/* Skeleton while loading */}
           {!imageLoaded && (
             <div className="absolute inset-0 skeleton" />
@@ -89,8 +86,8 @@ export default function ProductCard({ product, showQuickView = true }) {
           <img
             src={product.images?.[0] || 'https://via.placeholder.com/400x400?text=No+Image'}
             alt={product.name}
-            className={`w-full h-full object-cover transition-all duration-500 
-                       ${isHovered ? 'scale-110' : 'scale-100'}
+            className={`w-full h-full object-cover transition-all duration-300
+                       group-hover:scale-105
                        ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={() => setImageLoaded(true)}
             loading="lazy"
@@ -125,7 +122,7 @@ export default function ProductCard({ product, showQuickView = true }) {
           </div>
 
           {/* Quick Action Buttons */}
-          <div className={`absolute top-3 right-3 flex flex-col gap-2 transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'}`}>
+          <div className={`absolute top-3 right-3 flex flex-col gap-2 transition-all duration-300 opacity-100 sm:opacity-0 sm:group-hover:opacity-100`}>
             <button 
               onClick={handleWishlistClick}
               className={`p-2.5 rounded-xl shadow-lg backdrop-blur-sm transition-all duration-200 
@@ -134,9 +131,9 @@ export default function ProductCard({ product, showQuickView = true }) {
                            : 'bg-white/90 dark:bg-gray-800/90 text-gray-600 dark:text-gray-300 hover:bg-red-500 hover:text-white'}`}
             >
               {inWishlist ? (
-                <HeartIconSolid className="h-5 w-5" />
+                <HeartIconSolid className="h-4 w-4" />
               ) : (
-                <HeartIcon className="h-5 w-5" />
+                <HeartIcon className="h-4 w-4" />
               )}
             </button>
             
@@ -155,48 +152,25 @@ export default function ProductCard({ product, showQuickView = true }) {
             )}
           </div>
 
-          {/* Add to Cart Button */}
-          <div className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/50 to-transparent 
-                          transition-all duration-300 ${isHovered && !isOutOfStock ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <button
-              onClick={handleAddToCart}
-              disabled={isLoading || isOutOfStock}
-              className={`w-full py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 
-                         transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
-                         ${addedToCart 
-                           ? 'bg-green-500 text-white' 
-                           : 'bg-white text-gray-900 hover:bg-primary-500 hover:text-white'}`}
-            >
-              {addedToCart ? (
-                <>
-                  <CheckIcon className="h-5 w-5" />
-                  Added!
-                </>
-              ) : (
-                <>
-                  <ShoppingCartIcon className="h-5 w-5" />
-                  Add to Cart
-                </>
-              )}
-            </button>
-          </div>
-        </div>
+         </div> {/* close image container*/}
+          
+        
 
         {/* Content */}
-        <div className="p-4">
+       <div className="p-3 flex flex-col gap-1.5">
+        
           {/* Category */}
           <p className="text-xs text-primary-600 dark:text-primary-400 font-semibold uppercase tracking-wide mb-1.5">
             {product.categoryName || 'Uncategorized'}
           </p>
 
           {/* Name */}
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2 
-                        group-hover:text-primary-600 transition-colors duration-200 min-h-[2.5rem]">
+          <h3 className="text-sm font-semibold line-clamp-2">
             {product.name}
           </h3>
 
           {/* Rating */}
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-1 mb-2">
             <div className="flex">
               {renderStars(product.averageRating)}
             </div>
@@ -209,7 +183,7 @@ export default function ProductCard({ product, showQuickView = true }) {
           <div className="flex items-center gap-2 flex-wrap">
             {product.discountPrice ? (
               <>
-                <span className="text-lg font-bold text-gray-900 dark:text-white">
+                <span className="text-base font-bold text-gray-900 dark:text-white">
                   ₹{product.discountPrice.toLocaleString()}
                 </span>
                 <span className="text-sm text-gray-400 line-through">
@@ -217,7 +191,7 @@ export default function ProductCard({ product, showQuickView = true }) {
                 </span>
               </>
             ) : (
-              <span className="text-lg font-bold text-gray-900 dark:text-white">
+              <span className="text-base font-bold text-gray-900 dark:text-white">
                 ₹{product.price?.toLocaleString() || '0'}
               </span>
             )}
@@ -229,6 +203,29 @@ export default function ProductCard({ product, showQuickView = true }) {
               by <span className="font-medium">{product.brand}</span>
             </p>
           )}
+           <button
+  onClick={handleAddToCart}
+  disabled={isLoading || isOutOfStock}
+  className={`w-full mt-2 py-1.5 text-xs rounded-md font-semibold flex items-center justify-center gap-2 
+    transition-all duration-300 disabled:opacity-50
+    ${addedToCart 
+      ? 'bg-green-500 text-white' 
+      : 'bg-primary-600 text-white hover:bg-primary-700'}`}
+>
+  {addedToCart ? (
+    <>
+      <CheckIcon className="h-5 w-5" />
+      Added!
+    </>
+  ) : (
+    <>
+      <ShoppingCartIcon className="h-5 w-5" />
+      Add to Cart
+    </>
+  )}
+</button>
+
+          
         </div>
       </div>
     </Link>
