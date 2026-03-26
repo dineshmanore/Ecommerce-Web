@@ -1,5 +1,6 @@
 package com.ecommerce.controller;
 
+import com.ecommerce.dto.request.CategoryRequest;
 import com.ecommerce.dto.response.ApiResponse;
 import com.ecommerce.dto.response.CategoryResponse;
 import com.ecommerce.service.CategoryService;
@@ -44,5 +45,14 @@ public class CategoryController {
     public ResponseEntity<ApiResponse<List<CategoryResponse>>> getSubCategories(@PathVariable String id) {
         List<CategoryResponse> categories = categoryService.getSubCategories(id);
         return ResponseEntity.ok(ApiResponse.success(categories));
+    }
+
+    @PostMapping
+    public ResponseEntity<ApiResponse<CategoryResponse>> createCategory(
+        @RequestBody CategoryRequest request
+    ) {
+    CategoryResponse created = categoryService.createCategory(request);
+       return 
+     ResponseEntity.ok(ApiResponse.success(created));
     }
 }

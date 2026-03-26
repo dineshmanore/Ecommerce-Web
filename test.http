@@ -1,0 +1,16 @@
+
+POST https://ecommerce-web-gmwr.onrender.com/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "@D9075134498m"
+}
+POST https://ecommerce-web-gmwr.onrender.com/api/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3NzQ1MTI2MzQsImV4cCI6MTc3NDU5OTAzNH0.JM6aRwy7viZercDvWqzB7oQE8Rj7i3ajg9ckVO9jBZw
+Content-Type: application/json
+
+{
+  "name": "Electronics",
+  "description": "Devices and gadgets"
+}
