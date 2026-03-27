@@ -1,6 +1,6 @@
 # 🛒 Ecommerce Website – Full Stack (Java + React)
 
-A modern full-stack e-commerce web application built with **Spring Boot 3** and **React 18**, using **MongoDB** as the database and **JWT** for authentication.
+A modern full-stack e-commerce web application built with **Spring Boot 3** and **React 18**, using **MongoDB Atlas** as the database and **JWT** for authentication.
 
 <p align="center">Built with ❤️ by Dinesh Manore</p>
 
@@ -23,11 +23,21 @@ A modern full-stack e-commerce web application built with **Spring Boot 3** and 
 
 | Backend | Frontend | Database |
 |---------|----------|----------|
-| Java 21 | React 18 | MongoDB |
+| Java 21 | React 18 | MongoDB Atlas |
 | Spring Boot 3.2 | Vite 5 | |
 | Spring Security (JWT) | Tailwind CSS | |
 | Spring Data MongoDB | Zustand | |
 | Maven | React Router | |
+
+---
+
+## 🌐 Live Deployment
+
+| Layer    | Platform       | URL |
+|----------|----------------|-----|
+| Frontend | Vercel         | *(your Vercel URL here)* |
+| Backend  | Render         | *(your Render URL here)* |
+| Database | MongoDB Atlas  | Cloud hosted |
 
 ---
 
@@ -183,19 +193,20 @@ Ecommerce-Website-Java-main/
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Local Setup
 
 ### Prerequisites
 - Java 21
 - Node.js 18+
-- MongoDB (local or Atlas)
+- MongoDB Atlas account
 
 ### Backend
 
 ```bash
 cd backend
-# Set environment variables in .env file
-./mvnw spring-boot:run
+# Configure .env file (see below)
+./mvnw spring-boot:run        # Mac/Linux
+.\mvnw.cmd spring-boot:run    # Windows
 ```
 
 > Server runs at `http://localhost:8080`
@@ -216,14 +227,66 @@ npm run dev
 
 **Backend** (`backend/.env`)
 ```env
-MONGODB_URI=mongodb://localhost:27017/ecommerce
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/ecommerce
 JWT_SECRET=your-secret-key
+JWT_EXPIRATION=86400000
 ```
 
 **Frontend** (`frontend/.env`)
 ```env
 VITE_API_URL=http://localhost:8080/api
 ```
+
+For production, change `VITE_API_URL` to your Render backend URL:
+```env
+VITE_API_URL=https://your-backend.onrender.com/api
+```
+
+---
+
+## ☁️ Deployment Guide
+
+### 🎨 Frontend → Vercel
+
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) → **New Project** → Import your repo
+3. Set **Root Directory** to `frontend`
+4. Add environment variable:
+   ```
+   VITE_API_URL = https://your-backend.onrender.com/api
+   ```
+5. Click **Deploy** ✅
+
+---
+
+### ⚙️ Backend → Render
+
+1. Go to [render.com](https://render.com) → **New Web Service** → Connect your repo
+2. Set **Root Directory** to `backend`
+3. Set **Build Command**:
+   ```
+   ./mvnw clean package -DskipTests
+   ```
+4. Set **Start Command**:
+   ```
+   java -jar target/*.jar
+   ```
+5. Add environment variables:
+   ```
+   MONGODB_URI = mongodb+srv://...
+   JWT_SECRET  = your-secret-key
+   ```
+6. Click **Deploy** ✅
+
+---
+
+### 🍃 Database → MongoDB Atlas
+
+1. Go to [mongodb.com/atlas](https://www.mongodb.com/atlas)
+2. Create a free cluster
+3. Create a database user
+4. Whitelist all IPs: `0.0.0.0/0` (for Render)
+5. Copy the connection string and paste into `MONGODB_URI`
 
 ---
 
@@ -246,28 +309,11 @@ VITE_API_URL=http://localhost:8080/api
 
 ---
 
-## 🐳 Docker
-
-```bash
-cd backend
-docker build -t ecommerce-backend .
-docker run -p 8080:8080 ecommerce-backend
-```
-
----
-
-## 🌐 Deployment
-
-- **Frontend**: Configured for [Vercel](https://vercel.com) — `vercel.json` included
-- **Backend**: Dockerized and deployable to AWS, Railway, Render, etc.
-
----
-
 ## 👥 Team
 
-| Name          | Role     | Links |
-|---------------|----------|-------|
-| Dinesh Manore | Full Stack Developer | [GitHub](https://github.com/DineshManore) · [Email](mailto:manoredinesh66@gmail.com) |
+| Name          | Role                  | Links |
+|---------------|-----------------------|-------|
+| Dinesh Manore | Full Stack Developer  | [GitHub](https://github.com/DineshManore) · [Email](mailto:manoredinesh66@gmail.com) |
 
 ---
 
