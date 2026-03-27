@@ -35,8 +35,8 @@ A modern full-stack e-commerce web application built with **Spring Boot 3** and 
 
 | Layer    | Platform       | URL |
 |----------|----------------|-----|
-| Frontend | Vercel         | *(your Vercel URL here)* |
-| Backend  | Render         | *(your Render URL here)* |
+| Frontend | Vercel         | *https://smartcartdm.vercel.app* |
+| Backend  | Render         | *https://ecommerce-web-gmwr.onrender.com* |
 | Database | MongoDB Atlas  | Cloud hosted |
 
 ---
