@@ -1,10 +1,10 @@
-<<<<<<< HEAD
-# 🛒 E-Commerce Platform
+# 🛒 Ecommerce Website – Full Stack (Java + React)
 
-A modern Full-Stack E-Commerce Website built with **Spring Boot 3** and **React**.
+A modern full-stack e-commerce web application built with **Spring Boot 3** and **React 18**, using **MongoDB** as the database and **JWT** for authentication.
 
+<p align="center">Built with ❤️ by Dinesh Manore</p>
 
-
+---
 
 ## ✨ Features
 
@@ -15,6 +15,9 @@ A modern Full-Stack E-Commerce Website built with **Spring Boot 3** and **React*
 | 🛒 Shopping Cart | 📂 Category Management |
 | 📦 Order Tracking | 📋 Order Management |
 | ⭐ Reviews & Ratings | 👥 User Management |
+| ❤️ Wishlist | |
+
+---
 
 ## 🛠️ Tech Stack
 
@@ -24,56 +27,250 @@ A modern Full-Stack E-Commerce Website built with **Spring Boot 3** and **React*
 | Spring Boot 3.2 | Vite 5 | |
 | Spring Security (JWT) | Tailwind CSS | |
 | Spring Data MongoDB | Zustand | |
+| Maven | React Router | |
+
+---
+
+## 📁 Project Structure
+
+```
+Ecommerce-Website-Java-main/
+│   README.md
+│
+├── backend/
+│   │   .env
+│   │   Dockerfile
+│   │   mvnw / mvnw.cmd
+│   │   pom.xml
+│   │
+│   └── src/main/
+│       ├── java/com/ecommerce/
+│       │   │   EcommerceApplication.java
+│       │   ├── config/
+│       │   │       MongoConfig.java
+│       │   │       SecurityConfig.java
+│       │   ├── controller/
+│       │   │       AdminController.java
+│       │   │       AuthController.java
+│       │   │       CartController.java
+│       │   │       CategoryController.java
+│       │   │       OrderController.java
+│       │   │       PaymentController.java
+│       │   │       ProductController.java
+│       │   │       ReviewController.java
+│       │   │       UserController.java
+│       │   │       WishlistController.java
+│       │   ├── dto/
+│       │   │   ├── request/
+│       │   │   │       CartItemRequest.java
+│       │   │   │       CategoryRequest.java
+│       │   │   │       LoginRequest.java
+│       │   │   │       OrderRequest.java
+│       │   │   │       ProductRequest.java
+│       │   │   │       RegisterRequest.java
+│       │   │   │       ReviewRequest.java
+│       │   │   │       UpdateProfileRequest.java
+│       │   │   └── response/
+│       │   │           ApiResponse.java
+│       │   │           AuthResponse.java
+│       │   │           CartResponse.java
+│       │   │           CategoryResponse.java
+│       │   │           DashboardStatsResponse.java
+│       │   │           OrderResponse.java
+│       │   │           PageResponse.java
+│       │   │           ProductResponse.java
+│       │   │           ReviewResponse.java
+│       │   │           UserResponse.java
+│       │   ├── exception/
+│       │   │       BadRequestException.java
+│       │   │       GlobalExceptionHandler.java
+│       │   │       ResourceNotFoundException.java
+│       │   ├── model/
+│       │   │       Cart.java
+│       │   │       Category.java
+│       │   │       Order.java
+│       │   │       Payment.java
+│       │   │       Product.java
+│       │   │       Review.java
+│       │   │       User.java
+│       │   │       Wishlist.java
+│       │   ├── repository/
+│       │   │       CartRepository.java
+│       │   │       CategoryRepository.java
+│       │   │       OrderRepository.java
+│       │   │       PaymentRepository.java
+│       │   │       ProductRepository.java
+│       │   │       ReviewRepository.java
+│       │   │       UserRepository.java
+│       │   │       WishlistRepository.java
+│       │   ├── security/
+│       │   │       CustomUserDetailsService.java
+│       │   │       JwtAuthenticationFilter.java
+│       │   │       JwtTokenProvider.java
+│       │   └── service/
+│       │           AuthService.java
+│       │           CartService.java
+│       │           CategoryService.java
+│       │           DashboardService.java
+│       │           OrderService.java
+│       │           PaymentService.java
+│       │           ProductService.java
+│       │           ReviewService.java
+│       │           UserService.java
+│       │           WishlistService.java
+│       └── resources/
+│               application.yml
+│
+└── frontend/
+    │   .env
+    │   index.html
+    │   package.json
+    │   tailwind.config.js
+    │   vite.config.js
+    │   vercel.json
+    │
+    └── src/
+        │   App.jsx
+        │   main.jsx
+        │   index.css
+        ├── components/
+        │   ├── auth/
+        │   │       AdminRoute.jsx
+        │   │       ProtectedRoute.jsx
+        │   ├── category/
+        │   │       CategoryGrid.jsx
+        │   ├── layout/
+        │   │       Footer.jsx
+        │   │       Navbar.jsx
+        │   ├── product/
+        │   │       ProductCard.jsx
+        │   └── ui/
+        │           EmptyState.jsx
+        │           LoadingSpinner.jsx
+        │           Modal.jsx
+        │           Skeleton.jsx
+        ├── pages/
+        │   │   Cart.jsx
+        │   │   Checkout.jsx
+        │   │   Contact.jsx
+        │   │   FAQ.jsx
+        │   │   Home.jsx
+        │   │   Login.jsx
+        │   │   OrderDetails.jsx
+        │   │   Orders.jsx
+        │   │   ProductDetails.jsx
+        │   │   Products.jsx
+        │   │   Profile.jsx
+        │   │   Register.jsx
+        │   │   Returns.jsx
+        │   │   Shipping.jsx
+        │   │   Wishlist.jsx
+        │   └── admin/
+        │           Categories.jsx
+        │           Dashboard.jsx
+        │           OrderDetails.jsx
+        │           Orders.jsx
+        │           ProductForm.jsx
+        │           Products.jsx
+        │           Users.jsx
+        ├── services/
+        │       api.js
+        └── store/
+                authStore.js
+                cartStore.js
+                wishlistStore.js
+```
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Java 21, Node.js 18+, MongoDB
+- Java 21
+- Node.js 18+
+- MongoDB (local or Atlas)
 
 ### Backend
+
 ```bash
 cd backend
 # Set environment variables in .env file
-.\mvnw.cmd spring-boot:run
+./mvnw spring-boot:run
 ```
-Server runs at `http://localhost:8080`
+
+> Server runs at `http://localhost:8080`
 
 ### Frontend
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-App runs at `http://localhost:5173`
+
+> App runs at `http://localhost:5173`
+
+---
 
 ## ⚙️ Environment Variables
 
-**Backend** (`.env`)
+**Backend** (`backend/.env`)
 ```env
 MONGODB_URI=mongodb://localhost:27017/ecommerce
 JWT_SECRET=your-secret-key
 ```
 
-**Frontend** (`.env`)
+**Frontend** (`frontend/.env`)
 ```env
 VITE_API_URL=http://localhost:8080/api
 ```
 
-## 📄 License
+---
 
+## 📡 API Endpoints
 
-## 👥 Team
+| Method | Endpoint                | Description              |
+|--------|-------------------------|--------------------------|
+| POST   | `/api/auth/register`    | Register new user        |
+| POST   | `/api/auth/login`       | Login & get JWT token    |
+| GET    | `/api/products`         | Get all products         |
+| POST   | `/api/products`         | Create product (Admin)   |
+| GET    | `/api/cart`             | Get cart items           |
+| POST   | `/api/cart`             | Add item to cart         |
+| POST   | `/api/orders`           | Place an order           |
+| GET    | `/api/orders`           | Get user orders          |
+| GET    | `/api/wishlist`         | Get wishlist             |
+| GET    | `/api/admin/dashboard`  | Admin dashboard stats    |
 
-| Name                | Role                                                      |
-|---------------------|------------------------------------------------------------
-| Dinesh Manore       | [GitHub](https://github.com/DineshManore)  · [Email](mailto:manoredinesh66@gmail.com) |
-
+> 🔒 Protected routes require: `Authorization: Bearer <your_jwt_token>`
 
 ---
 
-MIT License
+## 🐳 Docker
 
-<p align="center">Built with ❤️ by Dinesh Manore</p>
-=======
-# Ecommerce-Web
->>>>>>> 900593a3ff14d2a3e24d709a6b14aff37304df93
+```bash
+cd backend
+docker build -t ecommerce-backend .
+docker run -p 8080:8080 ecommerce-backend
+```
+
+---
+
+## 🌐 Deployment
+
+- **Frontend**: Configured for [Vercel](https://vercel.com) — `vercel.json` included
+- **Backend**: Dockerized and deployable to AWS, Railway, Render, etc.
+
+---
+
+## 👥 Team
+
+| Name          | Role     | Links |
+|---------------|----------|-------|
+| Dinesh Manore | Full Stack Developer | [GitHub](https://github.com/DineshManore) · [Email](mailto:manoredinesh66@gmail.com) |
+
+---
+
+## 📄 License
+
+MIT License — feel free to use and modify this project.
