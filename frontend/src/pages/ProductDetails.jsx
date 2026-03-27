@@ -41,13 +41,11 @@ export default function ProductDetails() {
     const fetchProduct = async () => {
       setIsLoading(true);
       try {
-        const [productRes, reviewsRes] = await Promise.all([
-          productsAPI.getById(id),
-          reviewsAPI.getByProduct(id, { size: 10 }),
-        ]);
+        const productRes = await productsAPI.getById(id);
         const productData = productRes.data.data;
+
         setProduct(productData);
-        setReviews(reviewsRes.data.data.content || []);
+        setReviews(productData.reviews || []);
         setIsInWishlistState(isInWishlist(productData.id));
       } catch (error) {
         console.error('Failed to fetch product:', error);

@@ -319,4 +319,8 @@ VITE_API_URL=https://your-backend.onrender.com/api
 
 ## 📄 License
 
+<<<<<<< HEAD
 MIT License — feel free to use and modify this project.
+=======
+MIT License — feel free to use and modify this project.
+>>>>>>> 6acc8df (Add health endpoint)
