@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.ecommerce.model.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -41,9 +42,6 @@ public class ProductRequest {
     private boolean featured;
     private List<String> tags;
     
-    private String weight;
-    private String dimensions;
-    private String color;
-    private String material;
-    private String warranty;
+    private Product.ProductSpecs specs;
+
 }

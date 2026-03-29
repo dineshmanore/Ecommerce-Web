@@ -76,13 +76,7 @@ public class ProductService {
                 .active(request.isActive())
                 .featured(request.isFeatured())
                 .tags(request.getTags())
-                .specs(Product.ProductSpecs.builder()
-                        .weight(request.getWeight())
-                        .dimensions(request.getDimensions())
-                        .color(request.getColor())
-                        .material(request.getMaterial())
-                        .warranty(request.getWarranty())
-                        .build())
+                .specs(request.getSpecs())
                 .build();
         
         product = productRepository.save(product);
@@ -112,21 +106,9 @@ public class ProductService {
         product.setFeatured(request.isFeatured());
         if (request.getTags() != null) product.setTags(request.getTags());
         
-        if (request.getWeight() != null || request.getDimensions() != null || 
-            request.getColor() != null || request.getMaterial() != null || 
-            request.getWarranty() != null) {
-            
-            Product.ProductSpecs specs = product.getSpecs();
-            if (specs == null) {
-                specs = new Product.ProductSpecs();
-            }
-            if (request.getWeight() != null) specs.setWeight(request.getWeight());
-            if (request.getDimensions() != null) specs.setDimensions(request.getDimensions());
-            if (request.getColor() != null) specs.setColor(request.getColor());
-            if (request.getMaterial() != null) specs.setMaterial(request.getMaterial());
-            if (request.getWarranty() != null) specs.setWarranty(request.getWarranty());
-            product.setSpecs(specs);
-        }
+       if (request.getSpecs() != null) {
+    product.setSpecs(request.getSpecs());
+}
         
         product = productRepository.save(product);
         return ProductResponse.fromProduct(product);

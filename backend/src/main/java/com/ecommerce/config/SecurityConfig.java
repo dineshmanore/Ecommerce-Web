@@ -65,7 +65,9 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration config = new CorsConfiguration();
 
-    config.setAllowedOriginPatterns(List.of("https://smartcartdm.vercel.app")); // 🔥 allow all
+    config.setAllowedOriginPatterns(List.of(
+        "https://smartcartdm.vercel.app",
+         "http://localhost:5173" )); // 🔥 allow all
     config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS","PATCH"));
     config.setAllowedHeaders(List.of("*"));
     config.setAllowCredentials(true);

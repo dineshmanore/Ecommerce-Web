@@ -136,6 +136,8 @@ export default function ProductForm() {
        price: parseFloat(formData.price),
        discountPrice: formData.discountPrice ? parseFloat(formData.discountPrice) : null,
        stockQuantity: parseInt(formData.stockQuantity),
+
+       specs: formData.specs
       };
 
       if (isEditing) {
