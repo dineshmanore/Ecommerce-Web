@@ -9,6 +9,7 @@ export default defineConfig({
       '/api': {
         target: 'https://ecommerce-web-gmwr.onrender.com',
         changeOrigin: true,
+        secure: true,
       },
     },
   },

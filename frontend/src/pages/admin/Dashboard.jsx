@@ -37,7 +37,7 @@ export default function AdminDashboard() {
       try {
         const ordersRes = await adminAPI.getOrders({ size: 5, sortBy: 'createdAt', sortDir: 'desc' });
         console.log('Orders response:', ordersRes.data);
-        setRecentOrders(ordersRes.data?.data?.content || []);
+        setRecentOrders(ordersRes.data?.data?.content || ordersRes.data?.data || []);
       } catch (error) {
         console.error('Failed to fetch orders:', error);
       }

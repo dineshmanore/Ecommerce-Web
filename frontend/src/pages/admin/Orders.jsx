@@ -19,8 +19,8 @@ export default function AdminOrders() {
       if (statusFilter) params.status = statusFilter;
       
       const response = await adminAPI.getOrders(params);
-      setOrders(response.data.data.content || []);
-      setTotalPages(response.data.data.totalPages || 0);
+      setOrders(response.data.data.content || response.data.data || []);
+      setTotalPages(response.data.data.totalPages || 1);
     } catch (error) {
       console.error('Failed to fetch orders:', error);
     } finally {

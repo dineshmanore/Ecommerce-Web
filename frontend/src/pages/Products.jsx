@@ -60,8 +60,8 @@ export default function Products() {
            response = await productsAPI.getAll(params);
         }
 
-        setProducts(response.data.data.content || []);
-        setTotalPages(response.data.data.totalPages || 0);
+        setProducts(response.data.data || []);
+        setTotalPages(1);
       } catch (error) {
         console.error('Failed to fetch products:', error);
         setProducts([]);

@@ -21,9 +21,9 @@ export default function AdminProducts() {
   const fetchProducts = async () => {
     setIsLoading(true);
     try {
-      const response = await productsAPI.getAll({ page, size: 10 });
-      setProducts(response.data.data.content || []);
-      setTotalPages(response.data.data.totalPages || 0);
+      const response = await adminAPI.getProducts({ page, size: 10 });
+      setProducts(response.data.data.content || response.data.data || []);
+      setTotalPages(response.data.data.totalPages || 1);
     } catch (error) {
       console.error('Failed to fetch products:', error);
     } finally {

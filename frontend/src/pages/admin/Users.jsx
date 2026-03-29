@@ -15,8 +15,8 @@ export default function AdminUsers() {
     setIsLoading(true);
     try {
       const response = await adminAPI.getUsers({ page, size: 10 });
-      setUsers(response.data.data.content || []);
-      setTotalPages(response.data.data.totalPages || 0);
+      setUsers(response.data.data.content || response.data.data || []);
+      setTotalPages(response.data.data.totalPages || 1);
     } catch (error) {
       console.error('Failed to fetch users:', error);
     } finally {
