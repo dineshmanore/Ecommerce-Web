@@ -35,16 +35,24 @@ export default function AdminProducts() {
     fetchProducts();
   }, [page]);
 
-  const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this product?')) return;
-    
+  const handleDelete = async (id, name) => {
+    if (!window.confirm(`Permanently delete "${name}"?\nThis cannot be undone.`)) return;
     try {
-      await productsAPI.delete(id);
-      toast.success('Product deleted successfully');
+      await adminAPI.deleteProduct(id);
+      toast.success('Product deleted permanently');
       fetchProducts();
     } catch (error) {
-      console.error('Failed to delete product:', error);
-      toast.error('Failed to delete product');
+      toast.error(error.response?.data?.message || 'Failed to delete product');
+    }
+  };
+
+  const handleToggleActive = async (id, currentActive) => {
+    try {
+      await adminAPI.toggleProductActive(id);
+      toast.success(currentActive ? '🔴 Product set to Inactive' : '🟢 Product set to Active');
+      fetchProducts();
+    } catch (error) {
+      toast.error('Failed to update product status');
     }
   };
 
@@ -93,7 +101,7 @@ export default function AdminProducts() {
                     <th className="px-6 py-3">Category</th>
                     <th className="px-6 py-3">Price</th>
                     <th className="px-6 py-3">Stock</th>
-                    <th className="px-6 py-3">Status</th>
+                    <th className="px-6 py-3">Featured</th>
                     <th className="px-6 py-3">Actions</th>
                   </tr>
                 </thead>
@@ -134,12 +142,8 @@ export default function AdminProducts() {
                         {product.stockQuantity}
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          product.active
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
-                        }`}>
-                          {product.active ? 'Active' : 'Inactive'}
+                        <span className={`px-2 py-1 rounded text-xs font-semibold ${product.featured ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-500'}`}>
+                          {product.featured ? '⭐ Yes' : 'No'}
                         </span>
                       </td>
                       <td className="px-6 py-4">
@@ -147,12 +151,21 @@ export default function AdminProducts() {
                           <button
                             onClick={() => navigate(`/admin/products/${product.id}/edit`)}
                             className="p-2 text-gray-600 hover:text-primary-600 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+                            title="Edit product"
                           >
                             <PencilIcon className="h-4 w-4" />
                           </button>
                           <button
-                            onClick={() => handleDelete(product.id)}
-                            className="p-2 text-gray-600 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+                            onClick={() => handleToggleActive(product.id, product.active)}
+                            className={`px-2 py-1 rounded text-xs font-semibold transition-colors ${product.active ? 'bg-green-100 text-green-700 hover:bg-red-100 hover:text-red-700' : 'bg-red-100 text-red-700 hover:bg-green-100 hover:text-green-700'}`}
+                            title={product.active ? 'Click to Deactivate' : 'Click to Activate'}
+                          >
+                            {product.active ? 'Active' : 'Inactive'}
+                          </button>
+                          <button
+                            onClick={() => handleDelete(product.id, product.name)}
+                            className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg"
+                            title="Delete permanently"
                           >
                             <TrashIcon className="h-4 w-4" />
                           </button>
