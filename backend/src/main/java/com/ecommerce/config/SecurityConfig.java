@@ -48,7 +48,8 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
                 "/api/health",
                 "/api/auth/**",
                 "/api/products/**",
-                "/api/categories/**"
+                "/api/categories/**",
+                "/api/reviews/product/**"
             ).permitAll()
             .anyRequest().authenticated()
         )
