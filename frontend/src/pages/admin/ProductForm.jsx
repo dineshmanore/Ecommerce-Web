@@ -309,88 +309,43 @@ export default function ProductForm() {
         </div>
          
         <div className="card">
-         <h2 className="text-lg font-semibold mb-6">Specifications</h2>
+         <h2 className="text-lg font-semibold mb-6">Specifications <span className="text-sm font-normal text-gray-400">(optional — shown on product page)</span></h2>
 
          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-           <input
-  placeholder="Weight"
-  className="input-field"
-  value={formData.specs.weight}
-  onChange={(e)=>setFormData({
-    ...formData,
-    specs:{...formData.specs, weight:e.target.value}
-  })}
-/>
-
-<input
-  placeholder="Dimensions"
-  className="input-field"
-  value={formData.specs.dimensions}
-  onChange={(e)=>setFormData({
-    ...formData,
-    specs:{...formData.specs, dimensions:e.target.value}
-  })}
-/>
-
-<input
-  placeholder="Color"
-  className="input-field"
-  value={formData.specs.color}
-  onChange={(e)=>setFormData({
-    ...formData,
-    specs:{...formData.specs, color:e.target.value}
-  })}
-/>
-
-<input
-  placeholder="Material"
-  className="input-field"
-  value={formData.specs.material}
-  onChange={(e)=>setFormData({
-    ...formData,
-    specs:{...formData.specs, material:e.target.value}
-  })}
-/>
-
-<input
-  placeholder="Warranty"
-  className="input-field"
-  value={formData.specs.warranty}
-  onChange={(e)=>setFormData({
-    ...formData,
-    specs:{...formData.specs, warranty:e.target.value}
-  })}
-/>
+           <div>
+             <label className="block text-sm font-medium mb-2">Weight (e.g. 500g)</label>
+             <input placeholder="e.g. 500g" className="input-field" value={formData.specs.weight}
+               onChange={(e)=>setFormData(prev=>({...prev, specs:{...prev.specs, weight:e.target.value}}))} />
+           </div>
+           <div>
+             <label className="block text-sm font-medium mb-2">Dimensions (e.g. 30x20x10 cm)</label>
+             <input placeholder="e.g. 30x20x10 cm" className="input-field" value={formData.specs.dimensions}
+               onChange={(e)=>setFormData(prev=>({...prev, specs:{...prev.specs, dimensions:e.target.value}}))} />
+           </div>
+           <div>
+             <label className="block text-sm font-medium mb-2">Color</label>
+             <input placeholder="e.g. Red, Blue, Black" className="input-field" value={formData.specs.color}
+               onChange={(e)=>setFormData(prev=>({...prev, specs:{...prev.specs, color:e.target.value}}))} />
+           </div>
+           <div>
+             <label className="block text-sm font-medium mb-2">Material</label>
+             <input placeholder="e.g. Cotton, Plastic, Steel" className="input-field" value={formData.specs.material}
+               onChange={(e)=>setFormData(prev=>({...prev, specs:{...prev.specs, material:e.target.value}}))} />
+           </div>
+           <div>
+             <label className="block text-sm font-medium mb-2">Warranty</label>
+             <input placeholder="e.g. 1 Year, 6 Months" className="input-field" value={formData.specs.warranty}
+               onChange={(e)=>setFormData(prev=>({...prev, specs:{...prev.specs, warranty:e.target.value}}))} />
+           </div>
          </div>
        </div>
          
-         <div className="card">
-  <h2 className="text-lg font-semibold mb-6">Reviews</h2>
-
-  <input
-    type="number"
-    placeholder="Rating (1-5)"
-    className="input-field mb-3"
-    onChange={(e)=>setFormData({
-      ...formData,
-      averageRating:Number(e.target.value),
-      reviewCount:1
-    })}
-  />
-
-  <textarea
-    placeholder="Review comment"
-    className="input-field"
-    onChange={(e)=>setFormData({
-      ...formData,
-      reviews:[{
-        user:"Admin",
-        verified:true,
-        rating: formData.averageRating,
-        comment:e.target.value
-      }]
-    })}
-  />
+         <div className="card bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700">
+  <h2 className="text-lg font-semibold mb-2 text-blue-800 dark:text-blue-300">ℹ️ Reviews</h2>
+  <p className="text-sm text-blue-700 dark:text-blue-400">
+    Reviews are submitted by customers from the product detail page. 
+    To add a test review, visit the product page while logged in and use the review form there.
+  </p>
 </div>
 
         <div className="card">
