@@ -45,8 +45,11 @@ public class ReviewService {
             throw new BadRequestException("You have already reviewed this product");
         }
         
-        // Check if user has purchased the product (verified purchase)
+        // BLOCK review if user has not purchased this product with a DELIVERED order
         boolean isVerifiedPurchase = hasUserPurchasedProduct(user.getId(), request.getProductId());
+        if (!isVerifiedPurchase) {
+            throw new BadRequestException("You can only review products you have purchased and received");
+        }
         
         Review review = Review.builder()
                 .productId(request.getProductId())
