@@ -37,15 +37,25 @@ export default function ProductDetails() {
         console.log("PRODUCT:",product);
       },[product]);
       
+  const [reviewForm, setReviewForm] = useState({ rating: 5, comment: '', title: '' });
+  const [submittingReview, setSubmittingReview] = useState(false);
+
+  const loadReviews = async () => {
+    try {
+      const reviewsRes = await reviewsAPI.getByProduct(id);
+      setReviews(reviewsRes.data.data?.content || reviewsRes.data.data || []);
+    } catch (error) {
+      console.error('Failed to fetch reviews:', error);
+    }
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       setIsLoading(true);
       try {
         const productRes = await productsAPI.getById(id);
         const productData = productRes.data.data;
-
         setProduct(productData);
-        setReviews(productData.reviews || []);
         setIsInWishlistState(isInWishlist(productData.id));
       } catch (error) {
         console.error('Failed to fetch product:', error);
@@ -56,7 +66,24 @@ export default function ProductDetails() {
       }
     };
     fetchProduct();
+    loadReviews();
   }, [id, navigate]);
+
+  const handleSubmitReview = async (e) => {
+    e.preventDefault();
+    if (!isAuthenticated) { navigate('/login'); return; }
+    setSubmittingReview(true);
+    try {
+      await reviewsAPI.create({ productId: id, rating: reviewForm.rating, title: reviewForm.title, comment: reviewForm.comment });
+      toast.success('Review submitted successfully!');
+      setReviewForm({ rating: 5, comment: '', title: '' });
+      loadReviews();
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to submit review');
+    } finally {
+      setSubmittingReview(false);
+    }
+  };
 
   const handleAddToCart = async () => {
     if (!isAuthenticated) {
@@ -307,6 +334,45 @@ export default function ProductDetails() {
 
           {activeTab === 'reviews' && (
             <div>
+              {/* Write a Review */}
+              {isAuthenticated && (
+                <div className="card mb-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                  <h3 className="text-lg font-semibold mb-4">Write a Review</h3>
+                  <form onSubmit={handleSubmitReview} className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Rating</label>
+                      <div className="flex gap-2">
+                        {[1,2,3,4,5].map(star => (
+                          <button key={star} type="button" onClick={() => setReviewForm(f => ({...f, rating: star}))}
+                            className="text-2xl focus:outline-none transition-transform hover:scale-110">
+                            <span style={{color: star <= reviewForm.rating ? '#f59e0b' : '#d1d5db'}}>★</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Title (optional)</label>
+                      <input type="text" value={reviewForm.title} onChange={e => setReviewForm(f => ({...f, title: e.target.value}))}
+                        placeholder="Summary of your review" className="input-field" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Comment</label>
+                      <textarea value={reviewForm.comment} onChange={e => setReviewForm(f => ({...f, comment: e.target.value}))}
+                        placeholder="Share your experience with this product..." rows={4} className="input-field" required />
+                    </div>
+                    <button type="submit" disabled={submittingReview} className="btn-primary">
+                      {submittingReview ? 'Submitting...' : 'Submit Review'}
+                    </button>
+                  </form>
+                </div>
+              )}
+              {!isAuthenticated && (
+                <div className="text-center py-6 mb-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                  <p className="text-gray-500 mb-3">Please login to write a review</p>
+                  <button onClick={() => navigate('/login')} className="btn-primary">Login to Review</button>
+                </div>
+              )}
+              {/* Reviews List */}
               {reviews.length > 0 ? (
                 <div className="space-y-6">
                   {reviews.map((review) => (
@@ -322,6 +388,7 @@ export default function ProductDetails() {
                         <h4 className="font-medium mb-2">{review.title}</h4>
                       )}
                       <p className="text-gray-600 dark:text-gray-400">{review.comment}</p>
+                      <p className="text-xs text-gray-400 mt-2">{review.createdAt ? new Date(review.createdAt).toLocaleDateString('en-IN', {day:'numeric',month:'long',year:'numeric'}) : ''}</p>
                     </div>
                   ))}
                 </div>
