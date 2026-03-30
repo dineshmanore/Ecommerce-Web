@@ -117,8 +117,15 @@ public class ProductService {
     public void deleteProduct(String productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
-        product.setActive(false);
-        productRepository.save(product);
+        productRepository.delete(product);
+    }
+
+    public ProductResponse toggleActiveStatus(String productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
+        product.setActive(!product.isActive());
+        product = productRepository.save(product);
+        return ProductResponse.fromProduct(product);
     }
     
     public void updateProductRating(String productId, double newAverageRating, int reviewCount) {
