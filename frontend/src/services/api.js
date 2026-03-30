@@ -158,6 +158,7 @@ export const adminAPI = {
   createProduct: (data) => api.post('/admin/products', data),
   updateProduct: (id, data) => api.put(`/admin/products/${id}`, data),
   deleteProduct: (id) => api.delete(`/admin/products/${id}`),
+  toggleProductActive: (id) => api.put(`/admin/products/${id}/toggle-active`),
   
   // Categories
   getCategories: (params) => api.get('/admin/categories', { params }),
