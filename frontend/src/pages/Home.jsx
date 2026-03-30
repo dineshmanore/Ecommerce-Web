@@ -18,7 +18,7 @@ export default function Home() {
           productsAPI.getFeatured({ size: 8 }),
           categoriesAPI.getAll(),
         ]);
-        setFeaturedProducts(productsRes.data.data || []);
+        setFeaturedProducts(productsRes.data.data.content || productsRes.data.data || []);
         setCategories(categoriesRes.data.data || []);
       } catch (error) {
         console.error('Failed to fetch data:', error);
