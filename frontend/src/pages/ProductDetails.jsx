@@ -39,13 +39,36 @@ export default function ProductDetails() {
       
   const [reviewForm, setReviewForm] = useState({ rating: 5, comment: '', title: '' });
   const [submittingReview, setSubmittingReview] = useState(false);
+  const [canReview, setCanReview] = useState(false);
+  const [alreadyReviewed, setAlreadyReviewed] = useState(false);
 
-  const loadReviews = async () => {
+  const loadReviews = async (currentUser) => {
     try {
       const reviewsRes = await reviewsAPI.getByProduct(id);
-      setReviews(reviewsRes.data.data?.content || reviewsRes.data.data || []);
+      const reviewList = reviewsRes.data.data?.content || reviewsRes.data.data || [];
+      setReviews(reviewList);
+      // Check if current user already reviewed
+      if (currentUser) {
+        const already = reviewList.some(r => r.userId === currentUser.id);
+        setAlreadyReviewed(already);
+      }
     } catch (error) {
       console.error('Failed to fetch reviews:', error);
+    }
+  };
+
+  const checkCanReview = async () => {
+    if (!isAuthenticated) return;
+    try {
+      const ordersRes = await import('../services/api').then(m => m.ordersAPI.getMyOrders());
+      const orders = ordersRes.data?.content || ordersRes.data || [];
+      const hasDeliveredOrder = orders.some(order =>
+        order.status === 'DELIVERED' &&
+        order.items?.some(item => item.productId === id)
+      );
+      setCanReview(hasDeliveredOrder);
+    } catch {
+      setCanReview(false);
     }
   };
 
@@ -67,7 +90,8 @@ export default function ProductDetails() {
     };
     fetchProduct();
     loadReviews();
-  }, [id, navigate]);
+    checkCanReview();
+  }, [id, navigate, isAuthenticated]);
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
@@ -77,6 +101,7 @@ export default function ProductDetails() {
       await reviewsAPI.create({ productId: id, rating: reviewForm.rating, title: reviewForm.title, comment: reviewForm.comment });
       toast.success('Review submitted successfully!');
       setReviewForm({ rating: 5, comment: '', title: '' });
+      setAlreadyReviewed(true);
       loadReviews();
     } catch (error) {
       toast.error(error.response?.data?.message || 'Failed to submit review');
@@ -142,11 +167,11 @@ export default function ProductDetails() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Image Gallery */}
         <div>
-          <div className="h-56 sm:h-72 bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden mb-4">
+          <div className="aspect-square bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden mb-4">
             <img
               src={product.images?.[selectedImage] || 'https://via.placeholder.com/600'}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain p-2"
             />
           </div>
           {product.images?.length > 1 && (
@@ -334,10 +359,29 @@ export default function ProductDetails() {
 
           {activeTab === 'reviews' && (
             <div>
-              {/* Write a Review */}
-              {isAuthenticated && (
+              {/* Write a Review - only if user has a DELIVERED order containing this product */}
+              {!isAuthenticated && (
+                <div className="text-center py-6 mb-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                  <p className="text-gray-500 mb-2">🔒 Login to write a review</p>
+                  <p className="text-xs text-gray-400 mb-3">Only customers who purchased this product can review it</p>
+                  <button onClick={() => navigate('/login')} className="btn-primary">Login</button>
+                </div>
+              )}
+              {isAuthenticated && alreadyReviewed && (
+                <div className="text-center py-6 mb-6 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-700">
+                  <p className="text-green-600 dark:text-green-400 font-medium">✓ You have already reviewed this product</p>
+                </div>
+              )}
+              {isAuthenticated && !canReview && !alreadyReviewed && (
+                <div className="text-center py-6 mb-6 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl border border-yellow-200 dark:border-yellow-700">
+                  <p className="text-yellow-700 dark:text-yellow-400 font-medium">📦 Purchase Required</p>
+                  <p className="text-sm text-yellow-600 dark:text-yellow-500 mt-1">Only customers who have received this product (order marked as Delivered) can write a review.</p>
+                </div>
+              )}
+              {isAuthenticated && canReview && !alreadyReviewed && (
                 <div className="card mb-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                  <h3 className="text-lg font-semibold mb-4">Write a Review</h3>
+                  <h3 className="text-lg font-semibold mb-1">Write a Review</h3>
+                  <p className="text-xs text-green-600 dark:text-green-400 mb-4">✓ Verified Purchase</p>
                   <form onSubmit={handleSubmitReview} className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium mb-2">Rating</label>
@@ -364,12 +408,6 @@ export default function ProductDetails() {
                       {submittingReview ? 'Submitting...' : 'Submit Review'}
                     </button>
                   </form>
-                </div>
-              )}
-              {!isAuthenticated && (
-                <div className="text-center py-6 mb-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                  <p className="text-gray-500 mb-3">Please login to write a review</p>
-                  <button onClick={() => navigate('/login')} className="btn-primary">Login to Review</button>
                 </div>
               )}
               {/* Reviews List */}
