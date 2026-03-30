@@ -3,7 +3,7 @@ spring:
     name: ecommerce-backend
   data:
     mongodb:
-      uri: ${MONGO_URI:mongodb://localhost:27017/ecommerce}
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/ecommerce}
 
 server:
   port: ${PORT:8080}

@@ -18,7 +18,7 @@ export default function Orders() {
     const fetchOrders = async () => {
       try {
         const response = await ordersAPI.getMyOrders({ size: 50 });
-        setOrders(response.data.data.content || []);
+        setOrders(response.data.data || []);
       } catch (error) {
         console.error('Failed to fetch orders:', error);
       } finally {
