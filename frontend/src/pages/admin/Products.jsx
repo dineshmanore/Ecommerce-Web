@@ -7,7 +7,7 @@ import {
   MagnifyingGlassIcon 
 } from '@heroicons/react/24/outline';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
-import { productsAPI } from '../../services/api';
+import { productsAPI, adminAPI } from '../../services/api';
 import toast from 'react-hot-toast';
 
 export default function AdminProducts() {
