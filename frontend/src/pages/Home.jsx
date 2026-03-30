@@ -160,30 +160,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="py-16 bg-primary-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Subscribe to Our Newsletter
-          </h2>
-          <p className="text-primary-100 mb-8 max-w-2xl mx-auto">
-            Get the latest updates on new products and upcoming sales.
-          </p>
-          <form className="max-w-md mx-auto flex gap-2">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </section>
     </div>
   );
 }
