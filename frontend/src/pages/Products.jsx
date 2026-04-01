@@ -4,6 +4,7 @@ import { FunnelIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import ProductCard from '../components/product/ProductCard';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { productsAPI, categoriesAPI } from '../services/api';
+import api from '../services/api';
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,7 +25,7 @@ export default function Products() {
   const maxPrice = searchParams.get('maxPrice') || '';
 
   const page = parseInt(searchParams.get('page') || '0', 10);
-  const size = 12;
+  const size = 24;
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -46,9 +47,15 @@ export default function Products() {
         if (isFeatured) {
           res = await productsAPI.getFeatured({ page, size });
         } else if (searchQuery) {
-          res = await productsAPI.search(searchQuery, { page, size, categoryId, minPrice, maxPrice });
+          res = await productsAPI.search(searchQuery, { page, size });
+        } else if (minPrice && maxPrice) {
+          res = await api.get('/products/filter/price', { params: { min: minPrice, max: maxPrice, page, size } }).catch(err => {
+             return { data: { data: { content: [], totalElements: 0 } } };
+          });
+        } else if (categoryId) {
+          res = await productsAPI.getByCategory(categoryId, { page, size });
         } else {
-          res = await productsAPI.getAll({ page, size, categoryId, minPrice, maxPrice });
+          res = await productsAPI.getAll({ page, size });
         }
 
         setProducts(res.data.data.content || res.data.data || []);
