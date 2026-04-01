@@ -24,16 +24,38 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('Fetching dashboard data...');
         const [statsRes, ordersRes, productsRes] = await Promise.allSettled([
           adminAPI.getDashboardStats(),
           adminAPI.getOrders({ size: 5, sortBy: 'createdAt', sortDir: 'desc' }),
           adminAPI.getProducts({ size: 5, sortBy: 'createdAt', sortDir: 'desc' }),
         ]);
-        if (statsRes.status === 'fulfilled') setStats(statsRes.value.data?.data || {});
-        if (ordersRes.status === 'fulfilled') setRecentOrders(ordersRes.value.data?.data?.content || ordersRes.value.data?.data || []);
-        if (productsRes.status === 'fulfilled') setRecentProducts(productsRes.value.data?.data?.content || productsRes.value.data?.data || []);
-      } catch (e) { console.error(e); }
-      setIsLoading(false);
+        
+        if (statsRes.status === 'fulfilled') {
+          console.log('Stats fetched:', statsRes.value.data);
+          setStats(statsRes.value.data?.data || {});
+        } else {
+          console.error('Failed to fetch stats:', statsRes.reason);
+          toast.error('Failed to load dashboard statistics');
+        }
+
+        if (ordersRes.status === 'fulfilled') {
+          setRecentOrders(ordersRes.value.data?.data?.content || ordersRes.value.data?.data || []);
+        } else {
+          console.error('Failed to fetch orders:', ordersRes.reason);
+        }
+
+        if (productsRes.status === 'fulfilled') {
+          setRecentProducts(productsRes.value.data?.data?.content || productsRes.value.data?.data || []);
+        } else {
+          console.error('Failed to fetch products:', productsRes.reason);
+        }
+      } catch (e) { 
+        console.error('Unexpected error in dashboard data fetch:', e);
+        toast.error('An unexpected error occurred while loading dashboard data');
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchData();
   }, []);

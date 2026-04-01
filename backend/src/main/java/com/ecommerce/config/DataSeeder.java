@@ -53,8 +53,15 @@ public class DataSeeder implements CommandLineRunner {
                     String[] colors = {"Red", "Blue", "Black", "White", "Silver", "Gold"};
                     String randColor = colors[random.nextInt(colors.length)];
 
-                    String encodedName = category.getName().replace(" ", "+");
-                    String imageUrl = "https://via.placeholder.com/400?text=" + encodedName + "+Item+" + i;
+                    String categoryName = category.getName().toLowerCase();
+                    String imageKeyword = categoryName.contains("electronic") ? "tech" : 
+                                         categoryName.contains("fashion") ? "clothing" :
+                                         categoryName.contains("home") ? "interior" :
+                                         categoryName.contains("sport") ? "fitness" : categoryName;
+                    
+                    String imageUrl = String.format("https://images.unsplash.com/photo-%d?auto=format&fit=crop&q=80&w=800", 
+                        1500000000000L + Math.abs(category.getName().hashCode()) + (long)i * 1234567L);
+
 
                     Product.ProductSpecs specs = Product.ProductSpecs.builder()
                             .weight("1.5 kg")

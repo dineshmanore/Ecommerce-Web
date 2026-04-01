@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { FunnelIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { FunnelIcon, MagnifyingGlassIcon, AdjustmentsHorizontalIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import ProductCard from '../components/product/ProductCard';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { productsAPI, categoriesAPI } from '../services/api';
@@ -79,7 +79,6 @@ export default function Products() {
         newParams.set(key, value);
       }
     });
-    // Reset page on filter change
     if (!updates.hasOwnProperty('page')) {
       newParams.delete('page');
     }
@@ -96,158 +95,191 @@ export default function Products() {
   const currentCategory = categories.find(c => c.id === categoryId);
 
   return (
-    <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6">
+    <div className="bg-white dark:bg-gray-950 min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
 
-      {/* Mobile filter toggle */}
-      <div className="md:hidden flex items-center justify-between mb-4">
-        <h1 className="text-xl font-bold">Results</h1>
-        <button
-          onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-md font-medium shadow-sm hover:bg-gray-200"
-        >
-          <FunnelIcon className="h-5 w-5" /> Filters
-        </button>
-      </div>
+        {/* Mobile filter toggle */}
+        <div className="md:hidden flex items-center justify-between mb-6">
+          <h1 className="text-3xl font-black tracking-tight text-gray-900 dark:text-white">Results</h1>
+          <button
+            onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
+            className="flex items-center gap-2 px-5 py-2.5 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl font-black text-xs uppercase tracking-widest shadow-sm"
+          >
+            <FunnelIcon className="h-5 w-5" /> Filters
+          </button>
+        </div>
 
-      {/* Sidebar Filters */}
-      <aside className={`${isMobileFiltersOpen ? 'block' : 'hidden'} md:block w-full md:w-64 flex-shrink-0 space-y-6 pt-2`}>
-      <div>
-        <h3 className="text-sm font-bold text-gray-900 mb-3 border-b pb-2">Category</h3>
-        <ul className="space-y-2 text-sm">
-          <li>
-            <button
-              onClick={() => updateFilters({ category: null })}
-              className={`text-left w-full hover:text-accent-600 ${!categoryId ? 'font-bold text-gray-900' : 'text-gray-700'}`}
+        {/* Sidebar Filters */}
+        <aside className={`${isMobileFiltersOpen ? 'block' : 'hidden'} md:block w-full md:w-72 flex-shrink-0 space-y-8`}>
+          <div className="glass-card p-6 sticky top-32">
+            <div className="flex items-center gap-2 mb-8">
+               <AdjustmentsHorizontalIcon className="h-5 w-5 text-primary-600" />
+               <h3 className="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white">Filter Results</h3>
+            </div>
+
+            <div className="space-y-10">
+              {/* Category Filter */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest">Departments</h4>
+                <div className="space-y-1">
+                  <button
+                    onClick={() => updateFilters({ category: null })}
+                    className={`flex items-center justify-between w-full px-3 py-2 rounded-xl text-sm font-bold transition-all ${!categoryId ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
+                  >
+                    All Items {!categoryId && <div className="h-1.5 w-1.5 bg-white rounded-full" />}
+                  </button>
+                  {categories.map(cat => (
+                    <button
+                      key={cat.id}
+                      onClick={() => updateFilters({ category: cat.id })}
+                      className={`flex items-center justify-between w-full px-3 py-2 rounded-xl text-sm font-bold transition-all ${categoryId === cat.id ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'}`}
+                    >
+                      {cat.name} {categoryId === cat.id && <div className="h-1.5 w-1.5 bg-white rounded-full" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Price Filter */}
+              <div className="space-y-4">
+                <h4 className="text-xs font-black text-gray-400 uppercase tracking-widest">Price Range</h4>
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  {[
+                    { label: '< ₹1k', min: null, max: 1000 },
+                    { label: '₹1k-5k', min: 1000, max: 5000 },
+                    { label: '₹5k-10k', min: 5000, max: 10000 },
+                    { label: '> ₹10k', min: 10000, max: null },
+                  ].map((range, i) => (
+                    <button 
+                      key={i}
+                      onClick={() => updateFilters({ minPrice: range.min, maxPrice: range.max })}
+                      className="px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-[10px] font-black text-gray-600 dark:text-gray-400 hover:border-primary-500 transition-all uppercase tracking-tighter"
+                    >
+                      {range.label}
+                    </button>
+                  ))}
+                </div>
+                
+                <form onSubmit={handlePriceSubmit} className="flex items-center gap-2">
+                  <input 
+                    name="min" 
+                    type="number" 
+                    placeholder="Min" 
+                    defaultValue={minPrice}
+                    className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-xs focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none" 
+                  />
+                  <input 
+                    name="max" 
+                    type="number" 
+                    placeholder="Max" 
+                    defaultValue={maxPrice}
+                    className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-xs focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none" 
+                  />
+                  <button type="submit" className="p-2 bg-primary-600 text-white rounded-xl shadow-lg hover:bg-primary-700 transition-all">
+                    <ArrowRightIcon className="h-4 w-4" />
+                  </button>
+                </form>
+              </div>
+              
+              {/* Specialized Programs */}
+              <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <div className="relative">
+                    <input 
+                      type="checkbox" 
+                      checked={isFeatured}
+                      onChange={(e) => updateFilters({ featured: e.target.checked ? 'true' : null })}
+                      className="sr-only"
+                    />
+                    <div className={`w-12 h-6 rounded-full transition-all duration-300 ${isFeatured ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'}`} />
+                    <div className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all duration-300 ${isFeatured ? 'translate-x-6' : 'translate-x-0'}`} />
+                  </div>
+                  <span className="text-sm font-bold text-gray-700 dark:text-gray-300 group-hover:text-primary-600 transition-colors">Prime Essential Only</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </aside >
+
+        {/* Main Content */}
+        <main className="flex-1">
+          {/* Top Result Bar */}
+          <div className="glass-panel p-4 mb-8 rounded-[1.5rem] flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="text-sm font-bold text-gray-500 dark:text-gray-400">
+               <span className="text-gray-900 dark:text-white">{totalElements}</span> items found
+               {searchQuery && <span> for <span className="text-primary-600">"{searchQuery}"</span></span>}
+               {currentCategory && <span> in <span className="text-primary-600">{currentCategory.name}</span></span>}
+            </div>
+            <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 px-4 py-2 rounded-xl border border-gray-100 dark:border-gray-700">
+               <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Sort by</span>
+               <select id="sort" className="bg-transparent text-xs font-bold text-gray-900 dark:text-white outline-none cursor-pointer">
+                 <option>Recommended</option>
+                 <option>Price: Low to High</option>
+                 <option>Price: High to Low</option>
+                 <option>Latest Arrivals</option>
+               </select>
+            </div>
+          </div>
+
+          {/* Products Grid */}
+          {isLoading ? (
+            <div className="flex justify-center items-center py-40">
+              <LoadingSpinner size="lg" />
+            </div>
+          ) : products.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {products.map((product) => (
+                <div key={product.id} className="animate-fade-in-up">
+                   <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="glass-card py-24 px-8 text-center border-none">
+               <div className="h-24 w-24 bg-primary-50 dark:bg-primary-900/30 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <FunnelIcon className="h-10 w-10" />
+               </div>
+               <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-4 leading-tight">Mismatched Vibes.</h2>
+               <p className="text-gray-500 dark:text-gray-400 mb-10 max-w-sm mx-auto font-medium">We couldn't find anything matching your filters. Try shaking things up a bit.</p>
+               <button
+                 onClick={() => updateFilters({ category: null, search: null, minPrice: null, maxPrice: null, featured: null })}
+                 className="btn-primary rounded-full px-10 py-4"
+               >
+                 Clear All Filters
+               </button>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {!isLoading && totalElements > size && (
+            <div className="mt-16 flex justify-center items-center gap-6">
+              <button
+                onClick={() => updateFilters({ page: Math.max(0, page - 1).toString() })}
+                disabled={page === 0}
+                className="h-14 w-14 rounded-full bg-white dark:bg-gray-900 shadow-soft flex items-center justify-center text-gray-400 hover:text-primary-600 disabled:opacity-30 disabled:scale-95 transition-all"
               >
-            All Departments
-          </button>
-        </li>
-        {categories.map(cat => (
-          <li key={cat.id} className="pl-2 border-l-2 border-transparent">
-            <button
-              onClick={() => updateFilters({ category: cat.id })}
-              className={`text-left w-full hover:text-accent-600 ${categoryId === cat.id ? 'font-bold text-gray-900' : 'text-gray-700'}`}
-                >
-            {cat.name}
-          </button>
-              </li>
-            ))}
-    </ul>
-        </div >
-        
-        <div>
-          <h3 className="text-sm font-bold text-gray-900 mb-3 border-b pb-2">Price</h3>
-          <ul className="space-y-2 text-sm mb-3 text-gray-700">
-            <li><button onClick={() => updateFilters({ minPrice: null, maxPrice: 1000 })} className="hover:text-accent-600">Under ₹1,000</button></li>
-            <li><button onClick={() => updateFilters({ minPrice: 1000, maxPrice: 5000 })} className="hover:text-accent-600">₹1,000 - ₹5,000</button></li>
-            <li><button onClick={() => updateFilters({ minPrice: 5000, maxPrice: 10000 })} className="hover:text-accent-600">₹5,000 - ₹10,000</button></li>
-            <li><button onClick={() => updateFilters({ minPrice: 10000, maxPrice: null })} className="hover:text-accent-600">Over ₹10,000</button></li>
-          </ul>
-          
-          <form onSubmit={handlePriceSubmit} className="flex items-center gap-2 text-sm">
-            <input 
-              name="min" 
-              type="number" 
-              placeholder="Min" 
-              defaultValue={minPrice}
-              className="w-16 px-2 py-1 border border-gray-400 rounded-sm focus:outline-none focus:border-accent-500" 
-            />
-            <span>-</span>
-            <input 
-              name="max" 
-              type="number" 
-              placeholder="Max" 
-              defaultValue={maxPrice}
-              className="w-16 px-2 py-1 border border-gray-400 rounded-sm focus:outline-none focus:border-accent-500" 
-            />
-            <button type="submit" className="px-3 py-1 bg-white border border-gray-400 rounded-sm shadow-sm hover:bg-gray-50 font-medium">
-              Go
-            </button>
-          </form>
-        </div>
-        
-        <div>
-          <h3 className="text-sm font-bold text-gray-900 mb-3 border-b pb-2">SmartCart Programs</h3>
-          <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-accent-600">
-            <input 
-              type="checkbox" 
-              checked={isFeatured}
-              onChange={(e) => updateFilters({ featured: e.target.checked ? 'true' : null })}
-              className="rounded border-gray-400 text-accent-500 focus:ring-accent-500"
-            />
-            <span>Prime Eligible</span>
-          </label>
-        </div>
-      </aside >
+                <ChevronLeftIcon className="h-6 w-6" />
+              </button>
+              <span className="text-sm font-black text-gray-900 dark:text-white tracking-widest uppercase">Page {page + 1}</span>
+              <button
+                onClick={() => updateFilters({ page: (page + 1).toString() })}
+                disabled={products.length < size}
+                className="h-14 w-14 rounded-full bg-white dark:bg-gray-900 shadow-soft flex items-center justify-center text-gray-400 hover:text-primary-600 disabled:opacity-30 disabled:scale-95 transition-all"
+              >
+                <ChevronRightIcon className="h-6 w-6" />
+              </button>
+            </div>
+          )}
+        </main>
+      </div>
+    </div>
+  );
+}
 
-    {/* Main Content */ }
-    < main className = "flex-1" >
-      {/* Top Result Bar */ }
-      < div className = "bg-white p-3 mb-4 shadow-sm border border-gray-200 rounded-sm flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600" >
-          <div>
-            1-{products.length} of over {totalElements} results
-            {searchQuery && <span> for <span className="text-accent-600 font-bold">"{searchQuery}"</span></span>}
-            {currentCategory && <span> in <span className="font-bold">{currentCategory.name}</span></span>}
-          </div>
-          <div className="mt-2 sm:mt-0 flex items-center gap-2">
-            <label htmlFor="sort" className="font-medium text-gray-700 shadow-none">Sort by:</label>
-            <select id="sort" className="bg-gray-100 border border-gray-300 rounded px-2 py-1 shadow-sm focus:outline-none focus:ring-1 focus:ring-accent-500 cursor-pointer">
-              <option>Featured</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-              <option>Customer Review</option>
-            </select>
-          </div>
-        </div >
-
-    {/* Products Grid */ }
-  {
-    isLoading ? (
-      <div className="flex justify-center items-center py-32">
-        <LoadingSpinner size="lg" />
-      </div>
-    ) : products.length > 0 ? (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    ) : (
-      <div className="bg-white py-16 px-4 text-center border border-gray-200 rounded-sm">
-        <p className="text-xl font-bold mb-4 text-gray-900">No results found.</p>
-        <p className="text-gray-600 mb-6">Try adjusting your filters or search query to find what you're looking for.</p>
-        <button
-          onClick={() => updateFilters({ category: null, search: null, minPrice: null, maxPrice: null, featured: null })}
-          className="px-6 py-2 bg-accent-400 hover:bg-accent-500 text-gray-900 font-bold rounded-sm shadow-sm"
-        >
-          Clear All Filters
-        </button>
-      </div>
-    )
-  }
-
-  {/* Pagination placeholder (if total > size) */ }
-  {
-    !isLoading && totalElements > size && (
-      <div className="mt-8 flex justify-center py-4 border-t border-gray-200 gap-2">
-        <button
-          onClick={() => updateFilters({ page: Math.max(0, page - 1).toString() })}
-          disabled={page === 0}
-          className="px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white disabled:opacity-50 disabled:bg-gray-100 hover:bg-gray-50"
-        >
-          Previous
-        </button>
-        <button
-          onClick={() => updateFilters({ page: (page + 1).toString() })}
-          disabled={products.length < size}
-          className="px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white hover:bg-gray-50 disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
-    )
-  }
-      </main >
-    </div >
+function ArrowRightIcon(props) {
+  return (
+    <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
   );
 }

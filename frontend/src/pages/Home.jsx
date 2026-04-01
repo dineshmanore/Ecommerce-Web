@@ -3,51 +3,23 @@ import { Link } from 'react-router-dom';
 import ProductCard from '../components/product/ProductCard';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { productsAPI, categoriesAPI } from '../services/api';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { 
+  ChevronLeftIcon, 
+  ChevronRightIcon, 
+  ShoppingBagIcon, 
+  SparklesIcon,
+  TicketIcon,
+  DevicePhoneMobileIcon,
+  HomeModernIcon,
+  UserCircleIcon,
+  ArrowRightIcon
+} from '@heroicons/react/24/outline';
 import { getValidImageUrl } from '../utils/imageUtils';
 
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const heroSlides = [
-    {
-      id: 1,
-      image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=2070",
-      title: "Welcome to SmartCart",
-      subtitle: "Millions of items at your fingertips.",
-      cta: "Shop Now",
-      link: "/products",
-      gradient: "from-blue-900/80 via-blue-800/60"
-    },
-    {
-      id: 2,
-      image: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&q=80&w=2070",
-      title: "Prime Day Deals",
-      subtitle: "Exclusive offers for Prime members.",
-      cta: "Join Prime",
-      link: "/products?featured=true",
-      gradient: "from-orange-900/80 via-orange-800/60"
-    },
-    {
-      id: 3,
-      image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=2070",
-      title: "New Arrivals in Fashion",
-      subtitle: "Upgrade your wardrobe today.",
-      cta: "Discover Fashion",
-      link: "/products",
-      gradient: "from-pink-900/80 via-pink-800/60"
-    }
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [heroSlides.length]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,129 +39,182 @@ export default function Home() {
     fetchData();
   }, []);
 
+  const categoryIcons = {
+    'electronics': <DevicePhoneMobileIcon className="w-8 h-8" />,
+    'fashion': <TicketIcon className="w-8 h-8" />,
+    'home': <HomeModernIcon className="w-8 h-8" />,
+    'default': <ShoppingBagIcon className="w-8 h-8" />
+  };
+
   return (
-    <div className="bg-gray-100 min-h-screen pb-10">
+    <div className="bg-white dark:bg-gray-950 min-h-screen pb-20 overflow-x-hidden">
       
-      {/* Hero Section - Real Carousel */}
-      <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden group">
+      {/* Modern Mesh Gradient Hero */}
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 overflow-hidden">
+        {/* Dynamic Background Blobs */}
+        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-primary-500/20 rounded-full blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[500px] h-[500px] bg-accent-500/20 rounded-full blur-[100px]" />
         
-        {heroSlides.map((slide, index) => (
-          <div 
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-          >
-            <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
-            <div className={`absolute inset-0 bg-gradient-to-b ${slide.gradient} to-transparent mix-blend-multiply`} />
-            
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 -mt-20 z-20">
-              <h1 className="text-4xl md:text-5xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg tracking-tight transition-transform duration-700 transform translate-y-0">
-                {slide.title}
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="flex-1 text-center lg:text-left space-y-8 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-black text-xs uppercase tracking-[0.2em] shadow-sm">
+                <SparklesIcon className="h-4 w-4" />
+                Next Gen Shopping
+              </div>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-gray-900 dark:text-white leading-[0.9]">
+                CRAFTED FOR <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-500">YOU.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-100 drop-shadow-md max-w-2xl mb-8 font-medium">
-                {slide.subtitle}
+              <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-xl font-medium leading-relaxed">
+                Discover a world of premium products curated with precision. Seamlessly elegant, uniquely yours.
               </p>
-              <Link to={slide.link} className="bg-accent-400 hover:bg-accent-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105 text-lg">
-                {slide.cta}
-              </Link>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                <Link to="/products" className="btn-primary py-4 px-10 rounded-full text-lg shadow-2xl shadow-primary-500/40">
+                  Explore Now
+                </Link>
+                <Link to="/products?featured=true" className="btn-secondary py-4 px-10 rounded-full text-lg border-2 border-gray-100">
+                  Top Deals
+                </Link>
+              </div>
+            </div>
+            
+            {/* Hero Feature Card */}
+            <div className="flex-1 w-full max-w-lg lg:max-w-none animate-fade-in-down delay-300">
+               <div className="relative group">
+                  <div className="absolute -inset-4 bg-gradient-to-tr from-primary-500 to-accent-400 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-30 transition-opacity" />
+                  <div className="relative glass-card p-1 overflow-hidden transition-all duration-500 hover:rotate-1">
+                    <img 
+                      src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=1200" 
+                      alt="Hero Showcase" 
+                      className="w-full h-[400px] lg:h-[500px] object-cover rounded-[2.5rem]"
+                    />
+                    <div className="absolute bottom-8 left-8 right-8 glass-panel p-6 rounded-3xl flex items-center justify-between">
+                       <div>
+                          <p className="text-xs font-bold text-primary-600 uppercase tracking-widest mb-1">Weekly Special</p>
+                          <h3 className="text-2xl font-black text-gray-900 dark:text-white">Signature Series</h3>
+                       </div>
+                       <div className="h-14 w-14 rounded-2xl bg-primary-600 text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                          <ArrowRightIcon className="h-6 w-6" />
+                       </div>
+                    </div>
+                  </div>
+               </div>
             </div>
           </div>
-        ))}
-        
-        {/* Carousel Navigation */}
-        <button 
-          onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/30 text-white hover:bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        >
-          <ChevronLeftIcon className="h-8 w-8" />
-        </button>
-        <button 
-          onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/30 text-white hover:bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        >
-          <ChevronRightIcon className="h-8 w-8" />
-        </button>
-
-        {/* Carousel Indicators */}
-        <div className="absolute bottom-56 left-1/2 -translate-x-1/2 z-30 flex gap-2">
-          {heroSlides.map((_, index) => (
-            <button 
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide ? 'w-8 bg-white' : 'w-2 bg-white/50'}`}
-            />
-          ))}
         </div>
+      </section>
 
-        {/* Fade to background color at the bottom */}
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-gray-100 to-transparent pointer-events-none z-20" />
-      </div>
-
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-64 md:-mt-80">
-        {/* Overlapping Category Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {categories.slice(0, 4).map((category, idx) => (
-            <div key={category.id || idx} className="bg-white p-5 shadow-sm rounded-sm flex flex-col h-full hover:shadow-md transition-shadow">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">{category.name}</h2>
-              <div className="flex-grow bg-gray-50 flex items-center justify-center mb-4 min-h-[150px] md:min-h-[250px] overflow-hidden">
-                <img 
-                  src={getValidImageUrl(category.image, category.name)} 
-                  alt={category.name} 
-                  className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <Link to={`/products?category=${category.id}`} className="text-sm text-primary-700 hover:text-primary-800 hover:underline mt-auto">
-                Shop now
-              </Link>
+      {/* Stylized Category Icons Section */}
+      <section className="py-24 px-4 bg-gray-50/50 dark:bg-gray-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-16">
+            <div className="space-y-2">
+              <h3 className="text-xs font-black uppercase tracking-[0.3em] text-primary-500">Categories</h3>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white">Browse by Genre</h2>
             </div>
-          ))}
-          {/* Fill empty spots if less than 4 categories */}
-          {categories.length < 4 && Array.from({ length: 4 - categories.length }).map((_, i) => (
-            <div key={`placeholder-${i}`} className="bg-white p-5 shadow-sm rounded-sm flex flex-col h-full">
-               <h2 className="text-xl font-bold text-gray-900 mb-4">More Deals</h2>
-               <div className="flex-grow bg-gray-100 min-h-[150px] md:min-h-[250px] mb-4"></div>
-               <Link to="/products" className="text-sm text-primary-700 hover:underline mt-auto">See all deals</Link>
-            </div>
-          ))}
-        </div>
-
-        {/* Featured Products Row */}
-        <div className="bg-white p-5 shadow-sm rounded-sm mb-8">
-          <div className="flex items-center gap-4 mb-4">
-            <h2 className="text-2xl font-bold text-gray-900">Featured items you might like</h2>
-            <Link to="/products?featured=true" className="text-sm text-primary-700 hover:underline hover:text-primary-800">
-              Explore more
+            <Link to="/products" className="group flex items-center gap-2 text-primary-600 font-bold hover:gap-4 transition-all">
+               View All Collections <ArrowRightIcon className="h-5 w-5" />
             </Link>
           </div>
-          
-          {isLoading ? (
-            <div className="flex justify-center py-12">
-              <LoadingSpinner size="lg" />
-            </div>
-          ) : featuredProducts.length > 0 ? (
-            <div className="flex overflow-x-auto gap-4 pb-4 hide-scrollbar snap-x">
-              {featuredProducts.map((product) => (
-                <div key={product.id} className="min-w-[220px] max-w-[220px] snap-start flex-shrink-0">
-                  <ProductCard product={product} showQuickView={false} />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-gray-500 py-6">No featured products available at the moment.</p>
-          )}
-        </div>
 
-        {/* Banner ad or another section */}
-        <div className="w-full bg-white border border-gray-200 rounded-sm mb-8 p-6 flex flex-col md:flex-row items-center justify-between shadow-sm">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-2xl font-bold mb-2">Join SmartCart Prime today</h3>
-            <p className="text-gray-600">Get free shipping, exclusive deals, and fast delivery.</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            {categories.map((category) => {
+              const iconKey = category.name.toLowerCase();
+              return (
+                <Link 
+                  key={category.id} 
+                  to={`/products?category=${category.id}`}
+                  className="group flex flex-col items-center gap-4 text-center"
+                >
+                  <div className="relative">
+                    <div className="absolute -inset-2 bg-gradient-to-tr from-primary-500 to-accent-500 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity" />
+                    <div className="relative h-24 w-24 md:h-32 md:w-32 rounded-full glass-panel flex items-center justify-center shadow-soft group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+                      <img 
+                        src={getValidImageUrl(category.image, category.name)} 
+                        alt={category.name}
+                        className="h-full w-full object-cover rounded-full p-1 opacity-80 group-hover:opacity-100 transition-opacity"
+                      />
+                      <div className="absolute inset-0 bg-primary-600/10 dark:bg-primary-600/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                         <SearchIcon className="h-8 w-8 text-white scale-90 group-hover:scale-100 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                  <span className="font-bold text-gray-700 dark:text-gray-300 group-hover:text-primary-600 transition-colors uppercase tracking-widest text-xs">
+                    {category.name}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
-          <button className="bg-accent-400 hover:bg-accent-500 px-6 py-2 rounded-full font-bold shadow-sm">
-            Try Prime Free
-          </button>
         </div>
-        
-      </div>
+      </section>
+
+      {/* Premium Featured Section */}
+      <section className="py-24 px-4 overflow-hidden relative">
+         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-accent-500/5 rounded-full blur-[80px]" />
+         
+         <div className="max-w-7xl mx-auto relative z-10">
+            <div className="flex items-center justify-between mb-16">
+               <h2 className="text-4xl font-black tracking-tight text-gray-900 dark:text-white">Curated Selection</h2>
+               <div className="flex gap-2">
+                  <button className="h-12 w-12 rounded-full border border-gray-200 dark:border-gray-800 flex items-center justify-center text-gray-400 hover:bg-white hover:text-primary-600 transition-all">
+                     <ChevronLeftIcon className="h-6 w-6" />
+                  </button>
+                  <button className="h-12 w-12 rounded-full border border-gray-200 dark:border-gray-800 flex items-center justify-center text-gray-400 hover:bg-white hover:text-primary-600 transition-all">
+                     <ChevronRightIcon className="h-6 w-6" />
+                  </button>
+               </div>
+            </div>
+
+            {isLoading ? (
+               <div className="flex justify-center py-20">
+                  <LoadingSpinner size="lg" />
+               </div>
+            ) : (
+               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {featuredProducts.slice(0, 4).map((product) => (
+                     <ProductCard key={product.id} product={product} />
+                  ))}
+               </div>
+            )}
+         </div>
+      </section>
+
+      {/* Ultra Modern Call to Action */}
+      <section className="px-4 py-12">
+        <div className="max-w-7xl mx-auto">
+           <div className="relative rounded-[3rem] overflow-hidden bg-gray-900 group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-900 to-black opacity-80" />
+              <img 
+                src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=2070" 
+                alt="Call to Action"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]"
+              />
+              <div className="relative z-10 px-8 py-20 md:p-24 flex flex-col items-center text-center">
+                 <h2 className="text-4xl md:text-6xl font-black text-white leading-tight mb-8">
+                   JOIN THE ULTIMATE <br/> SHOPPING CIRCLE.
+                 </h2>
+                 <p className="text-xl text-gray-300 max-w-2xl mb-12">
+                   Get exclusive access to drops, member-only pricing, and lightning-fast worldwide priority shipping.
+                 </p>
+                 <button className="btn-accent px-12 py-5 rounded-full text-xl shadow-glow transition-all">
+                    Register Now — It's Free
+                 </button>
+              </div>
+           </div>
+        </div>
+      </section>
+      
     </div>
+  );
+}
+
+// Add missing icon for the category hover
+function SearchIcon(props) {
+  return (
+    <svg {...props} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
   );
 }

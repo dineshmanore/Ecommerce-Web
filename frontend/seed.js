@@ -25,6 +25,12 @@ async function run() {
       for (let i = 1; i <= 15; i++) {
         const basePrice = Math.floor(Math.random() * 5000) + 500;
         
+        const imageKeyword = category.name.toLowerCase().includes("electronic") ? "tech" : 
+                            category.name.toLowerCase().includes("fashion") ? "clothing" :
+                            category.name.toLowerCase().includes("home") ? "interior" :
+                            category.name.toLowerCase().includes("sport") ? "fitness" : category.name.toLowerCase();
+        const imageUrl = `https://images.unsplash.com/photo-${1500000000000 + (category.name.charCodeAt(0) * 1000000) + (i * 123456)}?auto=format&fit=crop&q=80&w=800`;
+
         products.push({
           name: `${category.name} Item ${i} - Premium Select`,
           description: `This is a high-quality product in the ${category.name} category. It features premium materials and excellent build quality, ensuring a long shelf life and great usability. Highly recommended for everyday use.`,
@@ -34,7 +40,7 @@ async function run() {
           discountPercentage: 20,
           categoryId: catId,
           categoryName: category.name,
-          images: [`https://via.placeholder.com/400?text=${encodeURIComponent(category.name)}+Item+${i}`],
+          images: [imageUrl],
           stockQuantity: Math.floor(Math.random() * 100) + 10,
           active: true,
           featured: Math.random() > 0.8, // 20% chance to be featured
