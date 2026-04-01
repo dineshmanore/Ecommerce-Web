@@ -23,9 +23,40 @@ public class DataSeeder implements CommandLineRunner {
 
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
+    private final com.ecommerce.repository.UserRepository userRepository;
+    private final org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
 
-    @Override
     public void run(String... args) throws Exception {
+        // Seed Admin User
+        if (userRepository.findByEmail("admin@example.com").isEmpty()) {
+            log.info("Seeding default admin user...");
+            com.ecommerce.model.User admin = com.ecommerce.model.User.builder()
+                    .firstName("Admin")
+                    .lastName("User")
+                    .email("admin@example.com")
+                    .password(passwordEncoder.encode("admin123"))
+                    .roles(new java.util.HashSet<>(java.util.Arrays.asList(com.ecommerce.model.User.Role.ADMIN)))
+                    .active(true)
+                    .createdAt(LocalDateTime.now())
+                    .build();
+            userRepository.save(admin);
+            log.info("Default admin user seeded: admin@example.com / admin123");
+        // Seed User's Specific Admin
+        if (userRepository.findByEmail("admin@gmail.com").isEmpty()) {
+            log.info("Seeding user's specific admin user...");
+            com.ecommerce.model.User admin = com.ecommerce.model.User.builder()
+                    .firstName("Admin")
+                    .lastName("Account")
+                    .email("admin@gmail.com")
+                    .password(passwordEncoder.encode("@D9075134498m"))
+                    .roles(new java.util.HashSet<>(java.util.Arrays.asList(com.ecommerce.model.User.Role.ADMIN)))
+                    .active(true)
+                    .createdAt(LocalDateTime.now())
+                    .build();
+            userRepository.save(admin);
+            log.info("User's specific admin seeded: admin@gmail.com");
+        }
+
         long currentProductCount = productRepository.count();
 
         // Let's seed only if there are fewer than 100 products to prevent infinite seeding on restarts

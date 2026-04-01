@@ -20,26 +20,13 @@ public class DashboardService {
     private final UserRepository userRepository;
     
     public DashboardStatsResponse getDashboardStats() {
-        // Calculate total revenue from completed orders
-        List<Order> completedOrders = orderRepository.findByStatus(Order.OrderStatus.DELIVERED);
-        BigDecimal totalRevenue = completedOrders.stream()
-                .map(Order::getTotalAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        // Calculate total revenue from orders in various non-cancelled statuses
+        BigDecimal totalRevenue = BigDecimal.ZERO;
         
-        // Also add processing and shipped orders to revenue
-        List<Order> processingOrders = orderRepository.findByStatus(Order.OrderStatus.PROCESSING);
-        List<Order> shippedOrders = orderRepository.findByStatus(Order.OrderStatus.SHIPPED);
-        List<Order> confirmedOrders = orderRepository.findByStatus(Order.OrderStatus.CONFIRMED);
-        
-        totalRevenue = totalRevenue.add(processingOrders.stream()
-                .map(Order::getTotalAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add));
-        totalRevenue = totalRevenue.add(shippedOrders.stream()
-                .map(Order::getTotalAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add));
-        totalRevenue = totalRevenue.add(confirmedOrders.stream()
-                .map(Order::getTotalAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add));
+        totalRevenue = totalRevenue.add(calculateRevenue(Order.OrderStatus.DELIVERED));
+        totalRevenue = totalRevenue.add(calculateRevenue(Order.OrderStatus.SHIPPED));
+        totalRevenue = totalRevenue.add(calculateRevenue(Order.OrderStatus.PROCESSING));
+        totalRevenue = totalRevenue.add(calculateRevenue(Order.OrderStatus.CONFIRMED));
         
         long totalOrders = orderRepository.count();
         long totalProducts = productRepository.count();
@@ -59,5 +46,15 @@ public class DashboardService {
                 .activeProducts(activeProducts)
                 .lowStockProducts(lowStockProducts)
                 .build();
+    }
+
+    private BigDecimal calculateRevenue(Order.OrderStatus status) {
+        List<Order> orders = orderRepository.findByStatus(status);
+        if (orders == null || orders.isEmpty()) {
+            return BigDecimal.ZERO;
+        }
+        return orders.stream()
+                .map(order -> order.getTotalAmount() != null ? order.getTotalAmount() : BigDecimal.ZERO)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
