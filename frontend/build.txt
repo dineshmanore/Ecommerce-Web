@@ -1,0 +1,4 @@
+﻿
+> ecommerce-frontend@1.0.0 build
+> vite build
+

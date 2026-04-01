@@ -1,0 +1,83 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.ecommerce:ecommerce-backend >-------------------
+[INFO] Building E-Commerce Backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.0:run (default-cli) > test-compile @ ecommerce-backend >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ ecommerce-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ ecommerce-backend ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ ecommerce-backend ---
+[INFO] skip non existing resourceDirectory C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ ecommerce-backend ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.2.0:run (default-cli) < test-compile @ ecommerce-backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.0:run (default-cli) @ ecommerce-backend ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-04-01T06:56:35.969+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] com.ecommerce.EcommerceApplication       : Starting EcommerceApplication using Java 17.0.18 with PID 30820 (C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend\target\classes started by Dinesh in C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\backend)
+2026-04-01T06:56:35.975+05:30 DEBUG 30820 --- [ecommerce-backend] [  restartedMain] com.ecommerce.EcommerceApplication       : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-04-01T06:56:35.978+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] com.ecommerce.EcommerceApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-04-01T06:56:36.074+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-01T06:56:36.074+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-01T06:56:37.688+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-01T06:56:37.927+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 224 ms. Found 8 MongoDB repository interfaces.
+2026-04-01T06:56:39.533+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-01T06:56:39.560+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-01T06:56:39.561+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-04-01T06:56:39.716+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-01T06:56:39.720+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3641 ms
+2026-04-01T06:56:40.179+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Eclipse Adoptium/17.0.18+8"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='dinesh', source='admin', password=<hidden>, mechanismProperties=<hidden>}, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@53495a2f, com.mongodb.Jep395RecordCodecProvider@60167980, com.mongodb.KotlinCodecProvider@66dd8274]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[127.0.0.1:27017], srvHost=cluster0.sizscn5.mongodb.net, srvServiceName=mongodb, mode=MULTIPLE, requiredClusterType=REPLICA_SET, requiredReplicaSetName='atlas-g535qf-shard-0', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=true, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2026-04-01T06:56:40.195+05:30  INFO 30820 --- [ecommerce-backend] [cn5.mongodb.net] org.mongodb.driver.cluster               : Adding discovered server ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017 to client view of cluster
+2026-04-01T06:56:40.259+05:30  INFO 30820 --- [ecommerce-backend] [cn5.mongodb.net] org.mongodb.driver.cluster               : Adding discovered server ac-z2jbuaq-shard-00-00.sizscn5.mongodb.net:27017 to client view of cluster
+2026-04-01T06:56:40.270+05:30  INFO 30820 --- [ecommerce-backend] [cn5.mongodb.net] org.mongodb.driver.cluster               : Adding discovered server ac-z2jbuaq-shard-00-01.sizscn5.mongodb.net:27017 to client view of cluster
+2026-04-01T06:56:41.215+05:30  INFO 30820 --- [ecommerce-backend] [ngodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-z2jbuaq-shard-00-00.sizscn5.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=425673800, setName='atlas-g535qf-shard-0', canonicalAddress=ac-z2jbuaq-shard-00-00.sizscn5.mongodb.net:27017, hosts=[ac-z2jbuaq-shard-00-00.sizscn5.mongodb.net:27017, ac-z2jbuaq-shard-00-01.sizscn5.mongodb.net:27017, ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017], passives=[], arbiters=[], primary='ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=326, topologyVersion=TopologyVersion{processId=69b863d89a3189caaf737dcf, counter=4}, lastWriteDate=Wed Apr 01 06:56:38 IST 2026, lastUpdateTimeNanos=767045683367900}
+2026-04-01T06:56:41.215+05:30  INFO 30820 --- [ecommerce-backend] [ngodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=425719400, setName='atlas-g535qf-shard-0', canonicalAddress=ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017, hosts=[ac-z2jbuaq-shard-00-00.sizscn5.mongodb.net:27017, ac-z2jbuaq-shard-00-01.sizscn5.mongodb.net:27017, ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017], passives=[], arbiters=[], primary='ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000128, setVersion=326, topologyVersion=TopologyVersion{processId=69b8664bf1765a21235756ef, counter=6}, lastWriteDate=Wed Apr 01 06:56:38 IST 2026, lastUpdateTimeNanos=767045683367700}
+2026-04-01T06:56:41.215+05:30  INFO 30820 --- [ecommerce-backend] [ngodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-z2jbuaq-shard-00-01.sizscn5.mongodb.net:27017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=425677000, setName='atlas-g535qf-shard-0', canonicalAddress=ac-z2jbuaq-shard-00-01.sizscn5.mongodb.net:27017, hosts=[ac-z2jbuaq-shard-00-00.sizscn5.mongodb.net:27017, ac-z2jbuaq-shard-00-01.sizscn5.mongodb.net:27017, ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017], passives=[], arbiters=[], primary='ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az3'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=326, topologyVersion=TopologyVersion{processId=69b8694be554e291a4138e98, counter=3}, lastWriteDate=Wed Apr 01 06:56:38 IST 2026, lastUpdateTimeNanos=767045683380200}
+2026-04-01T06:56:41.226+05:30  INFO 30820 --- [ecommerce-backend] [ngodb.net:27017] org.mongodb.driver.cluster               : Discovered replica set primary ac-z2jbuaq-shard-00-02.sizscn5.mongodb.net:27017 with max election id 7fffffff0000000000000128 and max set version 326
+2026-04-01T06:56:41.317+05:30 DEBUG 30820 --- [ecommerce-backend] [  restartedMain] c.e.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-04-01T06:56:41.367+05:30  WARN 30820 --- [ecommerce-backend] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-04-01T06:56:42.985+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2a76c5ad, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6d52ddab, org.springframework.security.web.context.SecurityContextHolderFilter@26601f3e, org.springframework.security.web.header.HeaderWriterFilter@35c7e7bd, org.springframework.web.filter.CorsFilter@52bc473e, org.springframework.security.web.authentication.logout.LogoutFilter@6e9da0dc, com.ecommerce.security.JwtAuthenticationFilter@5ec7d1d3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2bc9daa1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4c624c72, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@383315f5, org.springframework.security.web.session.SessionManagementFilter@77cbe8f5, org.springframework.security.web.access.ExceptionTranslationFilter@6e48de62, org.springframework.security.web.access.intercept.AuthorizationFilter@75964eb6]
+2026-04-01T06:56:43.516+05:30  WARN 30820 --- [ecommerce-backend] [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-01T06:56:43.589+05:30  INFO 30820 --- [ecommerce-backend] [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-01T06:56:43.629+05:30 ERROR 30820 --- [ecommerce-backend] [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13.700 s
+[INFO] Finished at: 2026-04-01T06:56:44+05:30
+[INFO] ------------------------------------------------------------------------

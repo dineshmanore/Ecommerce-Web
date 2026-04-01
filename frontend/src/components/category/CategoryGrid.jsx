@@ -1,15 +1,7 @@
 import { Link } from 'react-router-dom';
+import { getValidImageUrl } from '../../utils/imageUtils';
 
 export default function CategoryGrid({ categories }) {
-  const categoryImages = {
-  electronics: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400',
-  fashion: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=400',
-  homekitchen: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400',
-  beauty: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400',
-  books: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400',
-  sports: 'https://c4.wallpaperflare.com/wallpaper/971/967/737/sports-images-for-desktop-background-wallpaper-preview.jpg'
-};
-
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
       {categories.map((category) => (
@@ -20,13 +12,7 @@ export default function CategoryGrid({ categories }) {
         >
           <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-700">
             <img
-              src={
-  category.image ||
-  categoryImages[
-    category.name?.toLowerCase().replace(/\s/g, '')
-  ] ||
-  'https://via.placeholder.com/200'
-}
+               src={getValidImageUrl(category.image, category.name)}
               alt={category.name}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />

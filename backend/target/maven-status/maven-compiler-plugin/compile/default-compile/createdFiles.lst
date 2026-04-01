@@ -112,6 +112,7 @@ com\ecommerce\model\Order$OrderBuilder.class
 com\ecommerce\controller\PaymentController.class
 com\ecommerce\dto\response\ApiResponse$ApiResponseBuilder.class
 com\ecommerce\repository\PaymentRepository.class
+com\ecommerce\config\DataSeeder.class
 com\ecommerce\model\Category$CategoryBuilder.class
 com\ecommerce\dto\response\CartResponse$CartItemDto.class
 com\ecommerce\model\Product$ProductSpecs$ProductSpecsBuilder.class

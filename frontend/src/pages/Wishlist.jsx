@@ -4,6 +4,7 @@ import { useWishlistStore } from '../store/wishlistStore';
 import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
 import EmptyState from '../components/ui/EmptyState';
+import { getValidImageUrl } from '../utils/imageUtils';
 
 export default function Wishlist() {
   const { items, removeFromWishlist, clearWishlist } = useWishlistStore();
@@ -62,7 +63,7 @@ export default function Wishlist() {
             <Link to={`/products/${product.id}`} className="block">
               <div className="relative aspect-square bg-gray-100 dark:bg-gray-700 overflow-hidden">
                 <img
-                  src={product.images?.[0] || 'https://via.placeholder.com/300'}
+                  src={getValidImageUrl(product.images?.[0], product.categoryName || product.name)}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />

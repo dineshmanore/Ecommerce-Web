@@ -1,0 +1,32 @@
+
+> ecommerce-frontend@1.0.0 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[32m✓[39m 18 modules transformed.
+[31mx[39m Build failed in 1.52s
+[31merror during build:
+[31m[vite:esbuild] Transform failed with 1 error:
+C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/frontend/src/pages/Cart.jsx:80:186: ERROR: Syntax error "`"[31m
+file: [36mC:/Users/Admin/Downloads/Ecommerce-Website-Java-main/frontend/src/pages/Cart.jsx:80:186[31m
+[33m
+[33mSyntax error "`"[33m
+78 |                    <div key={item.productId} className="flex flex-col sm:flex-row gap-4 border-b border-gray-200 pb-6 relative">
+79 |                      {/* Product Image */}
+80 |                      <div className="w-full sm:w-48 h-48 sm:h-auto object-contain flex-shrink-0 flex items-center justify-center p-2 mb-4 sm:mb-0 cursor-pointer" onClick={() => navigate(\`/products/\${item.productId}\`)}>
+   |                                                                                                                                                                                            ^
+81 |                        <img src={item.productImage || 'https://via.placeholder.com/150'} alt={item.productName} className="max-h-full max-w-full" />
+82 |                      </div>
+[31m
+    at failureErrorWithLog (C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\frontend\node_modules\esbuild\lib\main.js:1472:15)
+    at C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\frontend\node_modules\esbuild\lib\main.js:755:50
+    at responseCallbacks.<computed> (C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\frontend\node_modules\esbuild\lib\main.js:622:9)
+    at handleIncomingPacket (C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\frontend\node_modules\esbuild\lib\main.js:677:12)
+    at Socket.readFromStdout (C:\Users\Admin\Downloads\Ecommerce-Website-Java-main\frontend\node_modules\esbuild\lib\main.js:600:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)[39m

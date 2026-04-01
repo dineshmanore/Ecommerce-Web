@@ -1,0 +1,629 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.ecommerce:ecommerce-backend >-------------------
+[INFO] Building E-Commerce Backend 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ ecommerce-backend ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ ecommerce-backend ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 64 source files with javac [debug release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/controller/AdminController.java:[85,57] method toggleProductActive(java.lang.String) is already defined in class com.ecommerce.controller.AdminController
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[44,17] cannot find symbol
+  symbol:   method getAddress()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[45,36] cannot find symbol
+  symbol:   method builder()
+  location: class com.ecommerce.dto.response.UserResponse.AddressDto
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[46,33] cannot find symbol
+  symbol:   method getAddress()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[47,31] cannot find symbol
+  symbol:   method getAddress()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[48,32] cannot find symbol
+  symbol:   method getAddress()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[49,34] cannot find symbol
+  symbol:   method getAddress()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[50,34] cannot find symbol
+  symbol:   method getAddress()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[54,37] cannot find symbol
+  symbol:   method getRoles()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[57,28] cannot find symbol
+  symbol:   method builder()
+  location: class com.ecommerce.dto.response.UserResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[58,25] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[59,32] cannot find symbol
+  symbol:   method getFirstName()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[60,31] cannot find symbol
+  symbol:   method getLastName()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[61,28] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[62,28] cannot find symbol
+  symbol:   method getPhone()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[66,35] cannot find symbol
+  symbol:   method getProfileImage()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[67,29] cannot find symbol
+  symbol:   method isActive()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[68,32] cannot find symbol
+  symbol:   method getCreatedAt()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/ApiResponse.java:[21,27] cannot find symbol
+  symbol:   method <T>builder()
+  location: class com.ecommerce.dto.response.ApiResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/ApiResponse.java:[30,27] cannot find symbol
+  symbol:   method <T>builder()
+  location: class com.ecommerce.dto.response.ApiResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/ApiResponse.java:[39,27] cannot find symbol
+  symbol:   method <T>builder()
+  location: class com.ecommerce.dto.response.ApiResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[56,43] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[62,37] cannot find symbol
+  symbol:   method builder()
+  location: class com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[63,30] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[64,37] cannot find symbol
+  symbol:   method getDescription()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[65,31] cannot find symbol
+  symbol:   method getImage()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[67,34] cannot find symbol
+  symbol:   method getParentId()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[68,38] cannot find symbol
+  symbol:   method getDisplayOrder()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[80,20] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[80,50] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[80,76] cannot find symbol
+  symbol:   method getName()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[81,50] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[82,85] cannot find symbol
+  symbol:   method getSlug()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[85,37] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[86,21] cannot find symbol
+  symbol:   method setSlug(java.lang.String)
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[89,20] cannot find symbol
+  symbol:   method getDescription()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[89,78] cannot find symbol
+  symbol:   method getDescription()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[90,20] cannot find symbol
+  symbol:   method getImage()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[90,66] cannot find symbol
+  symbol:   method getImage()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[91,20] cannot find symbol
+  symbol:   method getParentId()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[91,72] cannot find symbol
+  symbol:   method getParentId()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[92,41] cannot find symbol
+  symbol:   method getDisplayOrder()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[93,35] cannot find symbol
+  symbol:   method isActive()
+  location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[113,17] cannot find symbol
+  symbol:   method setActive(boolean)
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[27,32] cannot find symbol
+  symbol:   method builder()
+  location: class com.ecommerce.dto.response.CategoryResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[28,29] cannot find symbol
+  symbol:   method getId()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[29,31] cannot find symbol
+  symbol:   method getName()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[30,38] cannot find symbol
+  symbol:   method getDescription()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[31,32] cannot find symbol
+  symbol:   method getImage()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[32,31] cannot find symbol
+  symbol:   method getSlug()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[33,35] cannot find symbol
+  symbol:   method getParentId()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[34,33] cannot find symbol
+  symbol:   method isActive()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[35,39] cannot find symbol
+  symbol:   method getDisplayOrder()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[36,36] cannot find symbol
+  symbol:   method getCreatedAt()
+  location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[29,41] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[35,41] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[37,61] cannot find symbol
+  symbol:   method getProductId()
+  location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[38,90] cannot find symbol
+  symbol:   method getProductId()
+  location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[40,21] cannot find symbol
+  symbol:   method isActive()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[44,20] cannot find symbol
+  symbol:   method getStockQuantity()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[44,49] cannot find symbol
+  symbol:   method getQuantity()
+  location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[45,86] cannot find symbol
+  symbol:   method getStockQuantity()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[49,52] cannot find symbol
+  symbol:   method getItems()
+  location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[50,67] cannot find symbol
+  symbol:   method getProductId()
+  location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[55,35] cannot find symbol
+  symbol:   method getQuantity()
+  location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[55,59] cannot find symbol
+  symbol:   method getQuantity()
+  location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[57,24] cannot find symbol
+  symbol:   method getStockQuantity()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[58,90] cannot find symbol
+  symbol:   method getStockQuantity()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[61,17] cannot find symbol
+  symbol:   method setQuantity(int)
+  location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[62,39] cannot find symbol
+  symbol:   method getDiscountPrice()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[62,76] cannot find symbol
+  symbol:   method getDiscountPrice()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[62,105] cannot find symbol
+  symbol:   method getPrice()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[63,17] cannot find symbol
+  symbol:   method setSubtotal(java.math.BigDecimal)
+  location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[65,39] cannot find symbol
+  symbol:   method getDiscountPrice()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[65,76] cannot find symbol
+  symbol:   method getDiscountPrice()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[65,105] cannot find symbol
+  symbol:   method getPrice()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[66,42] cannot find symbol
+  symbol:   method getImages()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[66,74] cannot find symbol
+  symbol:   method getImages()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[67,30] cannot find symbol
+  symbol:   method getImages()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[69,50] cannot find symbol
+  symbol:   method builder()
+  location: class com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[70,39] cannot find symbol
+  symbol:   method getId()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[71,41] cannot find symbol
+  symbol:   method getName()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[74,38] cannot find symbol
+  symbol:   method getQuantity()
+  location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[75,72] cannot find symbol
+  symbol:   method getQuantity()
+  location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[78,17] cannot find symbol
+  symbol:   method getItems()
+  location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[88,53] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[89,88] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[91,34] cannot find symbol
+  symbol:   method getItems()
+  location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[100,17] cannot find symbol
+  symbol:   method getItems()
+  location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[102,24] cannot find symbol
+  symbol:   method getStockQuantity()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[103,90] cannot find symbol
+  symbol:   method getStockQuantity()
+  location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[105,17] cannot find symbol
+  symbol:   method setQuantity(int)
+  location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[106,34] cannot find symbol
+  symbol:   method getPrice()
+  location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[116,53] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[117,88] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[119,13] cannot find symbol
+  symbol:   method getItems()
+  location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[127,53] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[129,17] cannot find symbol
+  symbol:   method getItems()
+  location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[137,48] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[144,40] cannot find symbol
+  symbol:   method builder()
+  location: class com.ecommerce.model.Cart
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.516 s
+[INFO] Finished at: 2026-04-01T02:30:53+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project ecommerce-backend: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/controller/AdminController.java:[85,57] method toggleProductActive(java.lang.String) is already defined in class com.ecommerce.controller.AdminController
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[44,17] cannot find symbol
+[ERROR]   symbol:   method getAddress()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[45,36] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ecommerce.dto.response.UserResponse.AddressDto
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[46,33] cannot find symbol
+[ERROR]   symbol:   method getAddress()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[47,31] cannot find symbol
+[ERROR]   symbol:   method getAddress()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[48,32] cannot find symbol
+[ERROR]   symbol:   method getAddress()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[49,34] cannot find symbol
+[ERROR]   symbol:   method getAddress()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[50,34] cannot find symbol
+[ERROR]   symbol:   method getAddress()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[54,37] cannot find symbol
+[ERROR]   symbol:   method getRoles()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[57,28] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ecommerce.dto.response.UserResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[58,25] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[59,32] cannot find symbol
+[ERROR]   symbol:   method getFirstName()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[60,31] cannot find symbol
+[ERROR]   symbol:   method getLastName()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[61,28] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[62,28] cannot find symbol
+[ERROR]   symbol:   method getPhone()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[66,35] cannot find symbol
+[ERROR]   symbol:   method getProfileImage()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[67,29] cannot find symbol
+[ERROR]   symbol:   method isActive()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/UserResponse.java:[68,32] cannot find symbol
+[ERROR]   symbol:   method getCreatedAt()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/ApiResponse.java:[21,27] cannot find symbol
+[ERROR]   symbol:   method <T>builder()
+[ERROR]   location: class com.ecommerce.dto.response.ApiResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/ApiResponse.java:[30,27] cannot find symbol
+[ERROR]   symbol:   method <T>builder()
+[ERROR]   location: class com.ecommerce.dto.response.ApiResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/ApiResponse.java:[39,27] cannot find symbol
+[ERROR]   symbol:   method <T>builder()
+[ERROR]   location: class com.ecommerce.dto.response.ApiResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[56,43] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[62,37] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[63,30] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[64,37] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[65,31] cannot find symbol
+[ERROR]   symbol:   method getImage()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[67,34] cannot find symbol
+[ERROR]   symbol:   method getParentId()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[68,38] cannot find symbol
+[ERROR]   symbol:   method getDisplayOrder()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[80,20] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[80,50] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[80,76] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[81,50] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[82,85] cannot find symbol
+[ERROR]   symbol:   method getSlug()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[85,37] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[86,21] cannot find symbol
+[ERROR]   symbol:   method setSlug(java.lang.String)
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[89,20] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[89,78] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[90,20] cannot find symbol
+[ERROR]   symbol:   method getImage()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[90,66] cannot find symbol
+[ERROR]   symbol:   method getImage()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[91,20] cannot find symbol
+[ERROR]   symbol:   method getParentId()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[91,72] cannot find symbol
+[ERROR]   symbol:   method getParentId()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[92,41] cannot find symbol
+[ERROR]   symbol:   method getDisplayOrder()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[93,35] cannot find symbol
+[ERROR]   symbol:   method isActive()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CategoryRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CategoryService.java:[113,17] cannot find symbol
+[ERROR]   symbol:   method setActive(boolean)
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[27,32] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ecommerce.dto.response.CategoryResponse
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[28,29] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[29,31] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[30,38] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[31,32] cannot find symbol
+[ERROR]   symbol:   method getImage()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[32,31] cannot find symbol
+[ERROR]   symbol:   method getSlug()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[33,35] cannot find symbol
+[ERROR]   symbol:   method getParentId()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[34,33] cannot find symbol
+[ERROR]   symbol:   method isActive()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[35,39] cannot find symbol
+[ERROR]   symbol:   method getDisplayOrder()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/dto/response/CategoryResponse.java:[36,36] cannot find symbol
+[ERROR]   symbol:   method getCreatedAt()
+[ERROR]   location: variable category of type com.ecommerce.model.Category
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[29,41] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[35,41] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[37,61] cannot find symbol
+[ERROR]   symbol:   method getProductId()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[38,90] cannot find symbol
+[ERROR]   symbol:   method getProductId()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[40,21] cannot find symbol
+[ERROR]   symbol:   method isActive()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[44,20] cannot find symbol
+[ERROR]   symbol:   method getStockQuantity()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[44,49] cannot find symbol
+[ERROR]   symbol:   method getQuantity()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[45,86] cannot find symbol
+[ERROR]   symbol:   method getStockQuantity()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[49,52] cannot find symbol
+[ERROR]   symbol:   method getItems()
+[ERROR]   location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[50,67] cannot find symbol
+[ERROR]   symbol:   method getProductId()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[55,35] cannot find symbol
+[ERROR]   symbol:   method getQuantity()
+[ERROR]   location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[55,59] cannot find symbol
+[ERROR]   symbol:   method getQuantity()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[57,24] cannot find symbol
+[ERROR]   symbol:   method getStockQuantity()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[58,90] cannot find symbol
+[ERROR]   symbol:   method getStockQuantity()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[61,17] cannot find symbol
+[ERROR]   symbol:   method setQuantity(int)
+[ERROR]   location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[62,39] cannot find symbol
+[ERROR]   symbol:   method getDiscountPrice()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[62,76] cannot find symbol
+[ERROR]   symbol:   method getDiscountPrice()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[62,105] cannot find symbol
+[ERROR]   symbol:   method getPrice()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[63,17] cannot find symbol
+[ERROR]   symbol:   method setSubtotal(java.math.BigDecimal)
+[ERROR]   location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[65,39] cannot find symbol
+[ERROR]   symbol:   method getDiscountPrice()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[65,76] cannot find symbol
+[ERROR]   symbol:   method getDiscountPrice()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[65,105] cannot find symbol
+[ERROR]   symbol:   method getPrice()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[66,42] cannot find symbol
+[ERROR]   symbol:   method getImages()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[66,74] cannot find symbol
+[ERROR]   symbol:   method getImages()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[67,30] cannot find symbol
+[ERROR]   symbol:   method getImages()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[69,50] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[70,39] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[71,41] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[74,38] cannot find symbol
+[ERROR]   symbol:   method getQuantity()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[75,72] cannot find symbol
+[ERROR]   symbol:   method getQuantity()
+[ERROR]   location: variable request of type com.ecommerce.dto.request.CartItemRequest
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[78,17] cannot find symbol
+[ERROR]   symbol:   method getItems()
+[ERROR]   location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[88,53] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[89,88] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[91,34] cannot find symbol
+[ERROR]   symbol:   method getItems()
+[ERROR]   location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[100,17] cannot find symbol
+[ERROR]   symbol:   method getItems()
+[ERROR]   location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[102,24] cannot find symbol
+[ERROR]   symbol:   method getStockQuantity()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[103,90] cannot find symbol
+[ERROR]   symbol:   method getStockQuantity()
+[ERROR]   location: variable product of type com.ecommerce.model.Product
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[105,17] cannot find symbol
+[ERROR]   symbol:   method setQuantity(int)
+[ERROR]   location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[106,34] cannot find symbol
+[ERROR]   symbol:   method getPrice()
+[ERROR]   location: variable item of type com.ecommerce.model.Cart.CartItem
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[116,53] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[117,88] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[119,13] cannot find symbol
+[ERROR]   symbol:   method getItems()
+[ERROR]   location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[127,53] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[129,17] cannot find symbol
+[ERROR]   symbol:   method getItems()
+[ERROR]   location: variable cart of type com.ecommerce.model.Cart
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[137,48] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.ecommerce.model.User
+[ERROR] /C:/Users/Admin/Downloads/Ecommerce-Website-Java-main/backend/src/main/java/com/ecommerce/service/CartService.java:[144,40] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ecommerce.model.Cart
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

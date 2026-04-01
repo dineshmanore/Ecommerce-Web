@@ -47,35 +47,12 @@ export default function AdminProducts() {
   };
 
   const handleToggleActive = async (id, currentActive) => {
-    const product = products.find(p => p.id === id);
-    if (!product) return;
     try {
-      await adminAPI.updateProduct(id, {
-        name: product.name,
-        description: product.description || '',
-        price: parseFloat(product.price),
-        discountPrice: product.discountPrice ? parseFloat(product.discountPrice) : null,
-        discountPercentage: product.discountPercentage || 0,
-        categoryId: product.categoryId,
-        brand: product.brand || '',
-        images: product.images || [],
-        stockQuantity: parseInt(product.stockQuantity) || 0,
-        featured: product.featured,
-        active: !currentActive,
-        tags: product.tags || [],
-        specs: product.specs ? {
-          weight: product.specs.weight || '',
-          dimensions: product.specs.dimensions || '',
-          color: product.specs.color || '',
-          material: product.specs.material || '',
-          warranty: product.specs.warranty || ''
-        } : { weight:'',dimensions:'',color:'',material:'',warranty:'' }
-      });
-      toast.success(!currentActive ? '🟢 Product is now Active' : '🔴 Product is now Inactive');
+      await adminAPI.toggleProductActive(id);
+      toast.success(currentActive ? '🔴 Product set to Inactive' : '🟢 Product set to Active');
       fetchProducts();
     } catch (error) {
-      console.error('Toggle error:', error);
-      toast.error('Failed to update. Check console for details.');
+      toast.error('Failed to update product status');
     }
   };
 

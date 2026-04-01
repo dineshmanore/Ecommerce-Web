@@ -11,6 +11,7 @@ import { HeartIcon as HeartIconSolid, StarIcon as StarIconSolid } from '@heroico
 import { useCartStore } from '../../store/cartStore';
 import { useAuthStore } from '../../store/authStore';
 import { useWishlistStore } from '../../store/wishlistStore';
+import { getValidImageUrl } from '../../utils/imageUtils';
 
 export default function ProductCard({ product, showQuickView = true }) {
   const { addToCart, isLoading } = useCartStore();
@@ -77,16 +78,16 @@ export default function ProductCard({ product, showQuickView = true }) {
     >
       <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm">
         {/* Image Container */}
-        <div className="relative h-40 sm:h-48 bg-gray-100 dark:bg-gray-800 overflow-hidden">
+        <div className="relative w-full bg-gray-100 dark:bg-gray-800 overflow-hidden" style={{aspectRatio:"1/1"}}>
           {/* Skeleton while loading */}
           {!imageLoaded && (
             <div className="absolute inset-0 skeleton" />
           )}
           
           <img
-            src={product.images?.[0] || 'https://via.placeholder.com/400x400?text=No+Image'}
+            src={getValidImageUrl(product.images?.[0], product.categoryName || product.name)}
             alt={product.name}
-            className={`w-full h-full object-cover transition-all duration-300
+            className={`w-full h-full object-contain transition-all duration-300
                        group-hover:scale-105
                        ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={() => setImageLoaded(true)}
@@ -105,8 +106,8 @@ export default function ProductCard({ product, showQuickView = true }) {
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-2">
             {product.featured && (
-              <span className="bg-gradient-to-r from-primary-600 to-primary-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg">
-                Featured
+              <span className="bg-primary-900 text-white text-xs font-bold px-2.5 py-1 rounded-sm shadow-sm flex items-center gap-1 border border-primary-700">
+                <CheckIcon className="h-3 w-3 text-accent-500 font-bold" /> Prime
               </span>
             )}
             {discountPercentage > 0 && (
@@ -165,7 +166,7 @@ export default function ProductCard({ product, showQuickView = true }) {
           </p>
 
           {/* Name */}
-          <h3 className="text-sm font-semibold line-clamp-2">
+          <h3 className="text-sm font-medium hover:text-accent-600 cursor-pointer line-clamp-2 transition-colors">
             {product.name}
           </h3>
 
@@ -206,11 +207,11 @@ export default function ProductCard({ product, showQuickView = true }) {
            <button
   onClick={handleAddToCart}
   disabled={isLoading || isOutOfStock}
-  className={`w-full mt-2 py-1.5 text-xs rounded-md font-semibold flex items-center justify-center gap-2 
+  className={`w-full mt-2 py-2 text-xs rounded-full font-bold flex items-center justify-center gap-2 
     transition-all duration-300 disabled:opacity-50
     ${addedToCart 
       ? 'bg-green-500 text-white' 
-      : 'bg-primary-600 text-white hover:bg-primary-700'}`}
+      : 'bg-accent-400 hover:bg-accent-500 text-gray-900 border border-accent-600 shadow-sm'}`}
 >
   {addedToCart ? (
     <>

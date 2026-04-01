@@ -77,12 +77,6 @@ public class AdminController {
     
     @PutMapping("/products/{id}/toggle-active")
     public ResponseEntity<ApiResponse<ProductResponse>> toggleProductActive(@PathVariable String id) {
-        ProductResponse product = productService.toggleActive(id);
-        return ResponseEntity.ok(ApiResponse.success("Product status updated", product));
-    }
-
-    @PutMapping("/products/{id}/toggle-active")
-    public ResponseEntity<ApiResponse<ProductResponse>> toggleProductActive(@PathVariable String id) {
         ProductResponse product = productService.toggleActiveStatus(id);
         return ResponseEntity.ok(ApiResponse.success("Product status updated", product));
     }

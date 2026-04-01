@@ -1,0 +1,99 @@
+package com.ecommerce.config;
+
+import com.ecommerce.model.Category;
+import com.ecommerce.model.Product;
+import com.ecommerce.repository.CategoryRepository;
+import com.ecommerce.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+@Component
+@Slf4j
+@RequiredArgsConstructor
+public class DataSeeder implements CommandLineRunner {
+
+    private final CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+
+    @Override
+    public void run(String... args) throws Exception {
+        long currentProductCount = productRepository.count();
+
+        // Let's seed only if there are fewer than 100 products to prevent infinite seeding on restarts
+        if (currentProductCount < 50) {
+            log.info("Starting data seed for categories + products...");
+            List<Category> categories = categoryRepository.findAll();
+
+            if (categories.isEmpty()) {
+                log.warn("No categories found in the database. Product seeding aborted.");
+                return;
+            }
+
+            Random random = new Random();
+            int idCounter = 1;
+
+            for (Category category : categories) {
+                log.info("Seeding 15 products for category: {}", category.getName());
+                List<Product> productsToSave = new ArrayList<>();
+
+                for (int i = 1; i <= 15; i++) {
+                    int basePriceInt = 500 + random.nextInt(4500);
+                    BigDecimal price = BigDecimal.valueOf(basePriceInt);
+                    BigDecimal discountPrice = BigDecimal.valueOf((int) (basePriceInt * 0.8));
+                    
+                    String[] colors = {"Red", "Blue", "Black", "White", "Silver", "Gold"};
+                    String randColor = colors[random.nextInt(colors.length)];
+
+                    String encodedName = category.getName().replace(" ", "+");
+                    String imageUrl = "https://via.placeholder.com/400?text=" + encodedName + "+Item+" + i;
+
+                    Product.ProductSpecs specs = Product.ProductSpecs.builder()
+                            .weight("1.5 kg")
+                            .dimensions("10x10x10 cm")
+                            .color(randColor)
+                            .material("Premium Mixed")
+                            .warranty("1 Year")
+                            .build();
+
+                    Product product = Product.builder()
+                            .name(category.getName() + " Premium Item " + i)
+                            .description("This is a high-quality product in the " + category.getName() + " category. It features premium materials and excellent build quality, ensuring a long shelf life and great usability. Highly recommended for everyday use.")
+                            .brand("Brand " + (random.nextInt(5) + 1))
+                            .price(price)
+                            .discountPrice(discountPrice)
+                            .discountPercentage(20)
+                            .categoryId(category.getId())
+                            .categoryName(category.getName())
+                            .images(Arrays.asList(imageUrl))
+                            .stockQuantity(10 + random.nextInt(100))
+                            .active(true)
+                            .featured(random.nextDouble() > 0.8)
+                            .averageRating(3.0 + (random.nextDouble() * 2))
+                            .reviewCount(random.nextInt(500))
+                            .tags(Arrays.asList(category.getName().toLowerCase(), "premium", "new arrival"))
+                            .specs(specs)
+                            .createdAt(LocalDateTime.now())
+                            .updatedAt(LocalDateTime.now())
+                            .build();
+
+                    productsToSave.add(product);
+                }
+
+                productRepository.saveAll(productsToSave);
+            }
+
+            log.info("Seeding complete. New product count: {}", productRepository.count());
+        } else {
+            log.info("Database already contains enough products (Count: {}). Seeding skipped.", currentProductCount);
+        }
+    }
+}
