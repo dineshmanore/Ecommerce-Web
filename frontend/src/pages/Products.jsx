@@ -25,6 +25,8 @@ export default function Products() {
   const maxPrice = searchParams.get('maxPrice') || '';
 
   const page = parseInt(searchParams.get('page') || '0', 10);
+  const sortBy = searchParams.get('sortBy') || 'createdAt';
+  const sortDir = searchParams.get('sortDir') || 'desc';
   const size = 24;
 
   useEffect(() => {
@@ -44,18 +46,20 @@ export default function Products() {
       setIsLoading(true);
       try {
         let res;
-                if (isFeatured) {
-          res = await productsAPI.getFeatured({ page, size });
+        const params = { page, size, sortBy, sortDir };
+
+        if (isFeatured) {
+          res = await productsAPI.getFeatured(params);
         } else if (searchQuery) {
-          res = await productsAPI.search(searchQuery, { page, size });
+          res = await productsAPI.search(searchQuery, params);
         } else if (minPrice || maxPrice) {
           const min = minPrice || 0;
           const max = maxPrice || 1000000;
-          res = await productsAPI.filterByPrice(min, max, { page, size });
+          res = await productsAPI.filterByPrice(min, max, params);
         } else if (categoryId) {
-          res = await productsAPI.getByCategory(categoryId, { page, size });
+          res = await productsAPI.getByCategory(categoryId, params);
         } else {
-          res = await productsAPI.getAll({ page, size });
+          res = await productsAPI.getAll(params);
         }
 
         setProducts(res.data?.data?.content || res.data?.data || []);
@@ -68,7 +72,7 @@ export default function Products() {
       }
     };
     fetchProducts();
-  }, [searchQuery, categoryId, isFeatured, minPrice, maxPrice, page]);
+  }, [searchQuery, categoryId, isFeatured, minPrice, maxPrice, page, sortBy, sortDir]);
 
   const updateFilters = (updates) => {
     const newParams = new URLSearchParams(searchParams);
@@ -212,11 +216,18 @@ export default function Products() {
             </div>
             <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 px-4 py-2 rounded-xl border border-gray-100 dark:border-gray-700">
                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Sort by</span>
-               <select id="sort" className="bg-transparent text-xs font-bold text-gray-900 dark:text-white outline-none cursor-pointer">
-                 <option>Recommended</option>
-                 <option>Price: Low to High</option>
-                 <option>Price: High to Low</option>
-                 <option>Latest Arrivals</option>
+               <select 
+                 value={`${searchParams.get('sortBy') || 'createdAt'}-${searchParams.get('sortDir') || 'desc'}`}
+                 onChange={(e) => {
+                   const [sortBy, sortDir] = e.target.value.split('-');
+                   updateFilters({ sortBy, sortDir });
+                 }}
+                 className="bg-transparent text-xs font-bold text-gray-900 dark:text-white outline-none cursor-pointer"
+               >
+                 <option value="createdAt-desc">Recommended</option>
+                 <option value="price-asc">Price: Low to High</option>
+                 <option value="price-desc">Price: High to Low</option>
+                 <option value="createdAt-desc">Latest Arrivals</option>
                </select>
             </div>
           </div>
