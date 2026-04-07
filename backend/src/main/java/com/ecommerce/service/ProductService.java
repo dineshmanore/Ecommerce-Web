@@ -115,9 +115,10 @@ public class ProductService {
     }
     
     public void deleteProduct(String productId) {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
-        productRepository.delete(product);
+        if (!productRepository.existsById(productId)) {
+            throw new ResourceNotFoundException("Product", "id", productId);
+        }
+        productRepository.deleteById(productId);
     }
 
     public ProductResponse toggleActiveStatus(String productId) {
