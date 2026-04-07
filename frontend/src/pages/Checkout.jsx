@@ -90,6 +90,7 @@ export default function Checkout() {
       }
 
       // ✅ ONLINE PAYMENT (Razorpay)
+      setIsLoading(true);
       const paymentRes = await paymentAPI.createOrder({ amount: total });
       const order = paymentRes.data; 
 
@@ -120,7 +121,8 @@ export default function Checkout() {
             navigate(`/orders/${response.data.data.id}`);
           } catch (err) {
             console.error("Order creation failed after payment:", err);
-            toast.error("Payment was successful but we couldn't create your order. Please contact support.");
+            const errorMsg = err.response?.data?.message || "Order creation failed. Please contact support.";
+            toast.error(errorMsg);
             setIsLoading(false);
           }
         },
@@ -136,7 +138,8 @@ export default function Checkout() {
 
     } catch (err) {
       console.error(err);
-      toast.error("Payment failed");
+      const errorMsg = err.response?.data?.message || "Payment initiation failed";
+      toast.error(errorMsg);
       setIsLoading(false);
     }
   };
