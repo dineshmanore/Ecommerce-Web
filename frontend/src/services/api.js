@@ -206,3 +206,8 @@ export const adminAPI = {
   getSettings: () => api.get('/admin/settings'),
   updateSettings: (data) => api.put('/admin/settings', data),
 };
+
+// Payment API
+export const paymentAPI = {
+  createOrder: (data) => api.post('/payment/create-order', data),
+};

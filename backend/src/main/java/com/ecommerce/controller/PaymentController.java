@@ -33,6 +33,7 @@ public class PaymentController {
 
         Order order = client.orders.create(options);
 
-        return ResponseEntity.ok(order.toString());
+        // Convert the Razorpay order to a map to ensure JSON response
+        return ResponseEntity.ok(order.toJson().toMap());
     }
 }

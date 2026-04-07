@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { useCartStore } from '../store/cartStore';
-import { ordersAPI } from '../services/api';
+import { ordersAPI, paymentAPI } from '../services/api';
 import toast from 'react-hot-toast';
 import { getValidImageUrl } from '../utils/imageUtils';
 
@@ -90,18 +90,8 @@ export default function Checkout() {
       }
 
       // ✅ ONLINE PAYMENT (Razorpay)
-      const API = import.meta.env.VITE_API_URL || "https://ecommerce-web-gmwr.onrender.com/api";
-
-      const res = await fetch(`${API}/payment/create-order`, {
-        method: "POST",
-        headers: {
-         "Content-Type": "application/json",
-         "Authorization": `Bearer ${localStorage.getItem('token') || ''}` // Need token if auth is required
-        },
-        body: JSON.stringify({ amount: total })
-      });
-
-      const order = await res.json();
+      const paymentRes = await paymentAPI.createOrder({ amount: total });
+      const order = paymentRes.data; 
 
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY || "rzp_test_SV1Di4AUXyJL8e",
