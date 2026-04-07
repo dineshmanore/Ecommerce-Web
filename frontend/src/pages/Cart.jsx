@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { useCartStore } from '../store/cartStore';
+import { useAuthStore } from '../store/authStore';
 import { getValidImageUrl } from '../utils/imageUtils';
 
 export default function Cart() {
@@ -14,6 +15,7 @@ export default function Cart() {
     removeFromCart, 
     clearCart 
   } = useCartStore();
+  const { isAuthenticated } = useAuthStore();
 
   useEffect(() => {
     fetchCart();
@@ -60,8 +62,16 @@ export default function Cart() {
               Shop today's deals
             </Link>
             <div className="flex gap-4">
-               <Link to="/login" className="bg-accent-400 hover:bg-accent-500 text-gray-900 px-6 py-2 rounded-md font-medium shadow-sm border border-accent-600">Sign in to your account</Link>
-               <Link to="/register" className="bg-white hover:bg-gray-50 text-gray-900 px-6 py-2 rounded-md font-medium shadow-sm border border-gray-300">Sign up now</Link>
+               {isAuthenticated ? (
+                 <Link to="/products" className="bg-accent-400 hover:bg-accent-500 text-gray-900 px-6 py-2 rounded-md font-medium shadow-sm border border-accent-600">
+                   Start Shopping
+                 </Link>
+               ) : (
+                 <>
+                   <Link to="/login" className="bg-accent-400 hover:bg-accent-500 text-gray-900 px-6 py-2 rounded-md font-medium shadow-sm border border-accent-600">Sign in to your account</Link>
+                   <Link to="/register" className="bg-white hover:bg-gray-50 text-gray-900 px-6 py-2 rounded-md font-medium shadow-sm border border-gray-300">Sign up now</Link>
+                 </>
+               )}
             </div>
           </div>
         ) : (

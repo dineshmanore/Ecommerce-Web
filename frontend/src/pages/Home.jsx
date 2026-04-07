@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '../store/authStore';
 import ProductCard from '../components/product/ProductCard';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { productsAPI, categoriesAPI } from '../services/api';
@@ -20,6 +21,7 @@ export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { isAuthenticated } = useAuthStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -198,9 +200,12 @@ export default function Home() {
                  <p className="text-xl text-gray-300 max-w-2xl mb-12">
                    Get exclusive access to drops, member-only pricing, and lightning-fast worldwide priority shipping.
                  </p>
-                 <button className="btn-accent px-12 py-5 rounded-full text-xl shadow-glow transition-all">
-                    Register Now — It's Free
-                 </button>
+                  <Link 
+                    to={isAuthenticated ? "/orders" : "/register"} 
+                    className="btn-accent px-12 py-5 rounded-full text-xl shadow-glow transition-all"
+                  >
+                     {isAuthenticated ? "Check Your Status — It's Free" : "Register Now — It's Free"}
+                  </Link>
               </div>
            </div>
         </div>
