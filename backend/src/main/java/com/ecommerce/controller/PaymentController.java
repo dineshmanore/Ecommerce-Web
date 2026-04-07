@@ -3,6 +3,7 @@ package com.ecommerce.controller;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +14,11 @@ import java.util.Map;
 @CrossOrigin("*")
 public class PaymentController {
 
-    private static final String KEY = "rzp_test_SV1Di4AUXyJL8e";
-    private static final String SECRET = "cJW6ev62F6fOmDXKWKC3EW1A";
+    @Value("${razorpay.key.id:rzp_test_SV1Di4AUXyJL8e}")
+    private String KEY;
+
+    @Value("${razorpay.key.secret:cJW6ev62F6fOmDXKWKC3EW1A}")
+    private String SECRET;
 
     @PostMapping("/create-order")
     public ResponseEntity<?> createOrder(@RequestBody Map<String, Object> data) throws Exception {

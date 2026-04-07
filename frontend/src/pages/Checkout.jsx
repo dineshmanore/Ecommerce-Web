@@ -104,7 +104,7 @@ export default function Checkout() {
       const order = await res.json();
 
       const options = {
-        key: "rzp_test_SV1Di4AUXyJL8e",
+        key: import.meta.env.VITE_RAZORPAY_KEY || "rzp_test_SV1Di4AUXyJL8e",
         amount: order.amount,
         currency: "INR",
         name: "SmartCart",
