@@ -47,8 +47,14 @@ public class OrderService {
         // Validate stock and create order items
         List<Order.OrderItem> orderItems = cart.getItems().stream()
                 .map(cartItem -> {
-                    Product product = productRepository.findById(cartItem.getProductId())
+                    Product product;
+                    try {
+                        product = productRepository.findById(cartItem.getProductId())
                             .orElseThrow(() -> new ResourceNotFoundException("Product", "id", cartItem.getProductId()));
+                    } catch (ResourceNotFoundException e) {
+                        throw new BadRequestException("Product '" + cartItem.getProductName() + 
+                            "' is no longer available. Please remove it from your cart.");
+                    }
                     
                     if (product.getStockQuantity() < cartItem.getQuantity()) {
                         throw new BadRequestException("Insufficient stock for " + product.getName());
