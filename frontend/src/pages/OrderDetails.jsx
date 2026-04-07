@@ -208,11 +208,11 @@ export default function OrderDetails() {
               <h3 className="font-medium mb-2">Payment Method</h3>
               <p className="text-gray-600 dark:text-gray-400">
                 {order.paymentMethod === 'COD' && 'Cash on Delivery'}
-                {order.paymentMethod === 'CARD' && 'Credit/Debit Card'}
+                {(order.paymentMethod === 'CARD' || order.paymentMethod === 'CREDIT_CARD' || order.paymentMethod === 'DEBIT_CARD') && 'Credit/Debit Card'}
                 {order.paymentMethod === 'UPI' && 'UPI Payment'}
               </p>
               <p className={`text-sm mt-1 ${
-                order.paymentStatus === 'PAID' ? 'text-green-600' : 'text-yellow-600'
+                (order.paymentStatus === 'PAID' || order.paymentStatus === 'COMPLETED' || order.paymentStatus === 'SUCCESS') ? 'text-green-600' : 'text-yellow-600'
               }`}>
                 {order.paymentStatus}
               </p>

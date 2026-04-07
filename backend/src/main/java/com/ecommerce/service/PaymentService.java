@@ -61,8 +61,13 @@ public class PaymentService {
     }
     
     private Payment.PaymentMethod parsePaymentMethod(String method) {
+        if (method == null) return Payment.PaymentMethod.COD;
+        String normalizedMethod = method.toUpperCase();
+        if (normalizedMethod.equals("CARD")) {
+            return Payment.PaymentMethod.CREDIT_CARD;
+        }
         try {
-            return Payment.PaymentMethod.valueOf(method.toUpperCase());
+            return Payment.PaymentMethod.valueOf(normalizedMethod);
         } catch (IllegalArgumentException e) {
             return Payment.PaymentMethod.COD; // Default to COD
         }

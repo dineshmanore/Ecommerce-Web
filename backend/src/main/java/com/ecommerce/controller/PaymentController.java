@@ -23,7 +23,15 @@ public class PaymentController {
     @PostMapping("/create-order")
     public ResponseEntity<?> createOrder(@RequestBody Map<String, Object> data) throws Exception {
 
-        int amount = Integer.parseInt(data.get("amount").toString());
+        Object amountObj = data.get("amount");
+        int amount;
+        if (amountObj instanceof Integer) {
+            amount = (Integer) amountObj;
+        } else if (amountObj instanceof Double) {
+            amount = ((Double) amountObj).intValue();
+        } else {
+            amount = (int) Math.round(Double.parseDouble(amountObj.toString()));
+        }
 
         RazorpayClient client = new RazorpayClient(KEY, SECRET);
 

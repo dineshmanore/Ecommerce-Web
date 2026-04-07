@@ -101,17 +101,33 @@ export default function Checkout() {
         description: "Order Payment",
         order_id: order.id,
 
-        handler: async function (response) {
-          // after payment success → create order
-          const orderData = {
-            shippingAddress,
-            paymentMethod,
-          };
+        handler: async function (paymentResponse) {
+          try {
+            setIsLoading(true);
+            const orderData = {
+              shippingAddress,
+              paymentMethod: paymentMethod === 'CREDIT_CARD' ? 'CREDIT_CARD' : 'UPI',
+              notes: "Paid via Razorpay ID: " + paymentResponse.razorpay_payment_id
+            };
 
-          const res = await ordersAPI.create(orderData);
-          await clearCart();
-          toast.success("Payment successful!");
-          navigate(`/orders/${res.data.data.id}`);
+            const response = await ordersAPI.create(orderData);
+            
+            // Success! Clear locally and redirect
+            await clearCart();
+            toast.success("Order placed successfully!");
+            
+            // Redirect to the order details page
+            navigate(`/orders/${response.data.data.id}`);
+          } catch (err) {
+            console.error("Order creation failed after payment:", err);
+            toast.error("Payment was successful but we couldn't create your order. Please contact support.");
+            setIsLoading(false);
+          }
+        },
+        modal: {
+          ondismiss: function() {
+            setIsLoading(false);
+          }
         }
       };
 
@@ -226,8 +242,8 @@ export default function Checkout() {
               {activeStep === 2 ? (
                 <div className="p-4 pt-0 border-t border-gray-100 mt-2">
                   <div className="space-y-0 rounded-sm border border-gray-200 overflow-hidden">
-                    <label className={`flex items-start p-4 cursor-pointer hover:bg-gray-50 border-b border-gray-200 ${paymentMethod === 'CARD' ? 'bg-primary-50/30' : ''}`}>
-                      <input type="radio" name="paymentMethod" value="CARD" checked={paymentMethod === 'CARD'} onChange={(e) => setPaymentMethod(e.target.value)} className="mt-1 h-4 w-4 text-accent-500 focus:ring-accent-500 border-gray-300" />
+                    <label className={`flex items-start p-4 cursor-pointer hover:bg-gray-50 border-b border-gray-200 ${paymentMethod === 'CREDIT_CARD' ? 'bg-primary-50/30' : ''}`}>
+                      <input type="radio" name="paymentMethod" value="CREDIT_CARD" checked={paymentMethod === 'CREDIT_CARD'} onChange={(e) => setPaymentMethod(e.target.value)} className="mt-1 h-4 w-4 text-accent-500 focus:ring-accent-500 border-gray-300" />
                       <div className="ml-3">
                         <span className="font-bold text-gray-900 block mb-1">Credit or debit card</span>
                         <div className="flex gap-1 mb-2">
@@ -262,7 +278,7 @@ export default function Checkout() {
                   <div className="px-4 pb-4 pl-10">
                     <p className="text-sm text-gray-800 font-bold">
                       {paymentMethod === 'COD' && 'Cash on Delivery'}
-                      {paymentMethod === 'CARD' && 'Credit or debit card'}
+                      {paymentMethod === 'CREDIT_CARD' && 'Credit or debit card'}
                       {paymentMethod === 'UPI' && 'UPI'}
                     </p>
                   </div>

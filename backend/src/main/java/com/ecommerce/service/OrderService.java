@@ -70,7 +70,7 @@ public class OrderService {
                 .collect(Collectors.toList());
         
         BigDecimal subtotal = cart.getTotalPrice();
-        BigDecimal shippingCost = subtotal.compareTo(FREE_SHIPPING_THRESHOLD) >= 0 
+        BigDecimal shippingCost = subtotal.compareTo(FREE_SHIPPING_THRESHOLD) > 0 
                 ? BigDecimal.ZERO : SHIPPING_COST;
         BigDecimal totalAmount = subtotal.add(shippingCost);
         
