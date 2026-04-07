@@ -40,22 +40,31 @@ public class DataSeeder implements CommandLineRunner {
                     .createdAt(LocalDateTime.now())
                     .build();
             userRepository.save(admin);
-            log.info("Default admin user seeded: admin@example.com / admin123");
-        // Seed User's Specific Admin
-        if (userRepository.findByEmail("admin@gmail.com").isEmpty()) {
-            log.info("Seeding user's specific admin user...");
-            com.ecommerce.model.User admin = com.ecommerce.model.User.builder()
-                    .firstName("Admin")
-                    .lastName("Account")
-                    .email("admin@gmail.com")
-                    .password(passwordEncoder.encode("@D9075134498m"))
-                    .roles(new java.util.HashSet<>(java.util.Arrays.asList(com.ecommerce.model.User.Role.ADMIN)))
-                    .active(true)
-                    .createdAt(LocalDateTime.now())
-                    .build();
-            userRepository.save(admin);
-            log.info("User's specific admin seeded: admin@gmail.com");
         }
+        // Ensure specific admin user exists and has ADMIN role
+        userRepository.findByEmail("admin@gmail.com").ifPresentOrElse(
+            admin -> {
+                if (!admin.getRoles().contains(com.ecommerce.model.User.Role.ADMIN)) {
+                    admin.getRoles().add(com.ecommerce.model.User.Role.ADMIN);
+                    userRepository.save(admin);
+                    log.info("Promoted existing user admin@gmail.com to ADMIN role");
+                }
+            },
+            () -> {
+                log.info("Seeding user's specific admin user...");
+                com.ecommerce.model.User admin = com.ecommerce.model.User.builder()
+                        .firstName("Admin")
+                        .lastName("Account")
+                        .email("admin@gmail.com")
+                        .password(passwordEncoder.encode("@D9075134498m"))
+                        .roles(new java.util.HashSet<>(java.util.Arrays.asList(com.ecommerce.model.User.Role.ADMIN)))
+                        .active(true)
+                        .createdAt(LocalDateTime.now())
+                        .build();
+                userRepository.save(admin);
+                log.info("User's specific admin seeded: admin@gmail.com");
+            }
+        );
 
         long currentProductCount = productRepository.count();
 
