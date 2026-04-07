@@ -18,7 +18,14 @@ export default function Orders() {
     const fetchOrders = async () => {
       try {
         const response = await ordersAPI.getMyOrders({ size: 50 });
-        setOrders(response.data.data || []);
+        const data = response.data.data;
+        if (Array.isArray(data)) {
+          setOrders(data);
+        } else if (data && Array.isArray(data.content)) {
+          setOrders(data.content);
+        } else {
+          setOrders([]);
+        }
       } catch (error) {
         console.error('Failed to fetch orders:', error);
       } finally {
@@ -101,18 +108,18 @@ export default function Orders() {
                 <div className="flex items-center gap-2">
                   {getStatusIcon(order.orderStatus)}
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusBadge(order.orderStatus)}`}>
-                    {order.orderStatus}
+                    {order.orderStatus || 'N/A'}
                   </span>
                 </div>
               </div>
 
               <div className="space-y-4">
                 {order.items?.slice(0, 3).map((item) => (
-                  <div key={item.productId} className="flex gap-4">
+                  <div key={item.productId || Math.random()} className="flex gap-4">
                     <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden flex-shrink-0">
                       <img
                         src={item.productImage || 'https://via.placeholder.com/64'}
-                        alt={item.productName}
+                        alt={item.productName || 'Product'}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -121,24 +128,24 @@ export default function Orders() {
                         to={`/products/${item.productId}`}
                         className="font-medium hover:text-primary-600"
                       >
-                        {item.productName}
+                        {item.productName || 'Unknown Product'}
                       </Link>
                       <p className="text-sm text-gray-500">
-                        Qty: {item.quantity} × ₹{item.price.toLocaleString()}
+                        Qty: {item.quantity || 0} × ₹{(item.price || 0).toLocaleString()}
                       </p>
                     </div>
                   </div>
                 ))}
-                {order.items?.length > 3 && (
+                {(order.items?.length || 0) > 3 && (
                   <p className="text-sm text-gray-500">
-                    +{order.items.length - 3} more items
+                    +{(order.items?.length || 0) - 3} more items
                   </p>
                 )}
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-4 pt-4 border-t dark:border-gray-700">
                 <p className="font-semibold text-lg">
-                  Total: ₹{order.totalAmount.toLocaleString()}
+                  Total: ₹{(order.totalAmount || 0).toLocaleString()}
                 </p>
                 <Link
                   to={`/orders/${order.id}`}
