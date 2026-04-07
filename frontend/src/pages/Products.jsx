@@ -44,22 +44,22 @@ export default function Products() {
       setIsLoading(true);
       try {
         let res;
-        if (isFeatured) {
+                if (isFeatured) {
           res = await productsAPI.getFeatured({ page, size });
         } else if (searchQuery) {
           res = await productsAPI.search(searchQuery, { page, size });
-        } else if (minPrice && maxPrice) {
-          res = await api.get('/products/filter/price', { params: { min: minPrice, max: maxPrice, page, size } }).catch(err => {
-             return { data: { data: { content: [], totalElements: 0 } } };
-          });
+        } else if (minPrice || maxPrice) {
+          const min = minPrice || 0;
+          const max = maxPrice || 1000000;
+          res = await productsAPI.filterByPrice(min, max, { page, size });
         } else if (categoryId) {
           res = await productsAPI.getByCategory(categoryId, { page, size });
         } else {
           res = await productsAPI.getAll({ page, size });
         }
 
-        setProducts(res.data.data.content || res.data.data || []);
-        setTotalElements(res.data.data.totalElements || res.data.data.length || 0);
+        setProducts(res.data?.data?.content || res.data?.data || []);
+        setTotalElements(res.data?.data?.totalElements || res.data?.data?.length || 0);
       } catch (error) {
         console.error('Failed to fetch products:', error);
         setProducts([]);
