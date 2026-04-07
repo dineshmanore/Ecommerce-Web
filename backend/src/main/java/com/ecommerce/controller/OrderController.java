@@ -15,12 +15,19 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/orders")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class OrderController {
     
     private final OrderService orderService;
     
+    @GetMapping("/test")
+    public String test() {
+        return "Order controller is active";
+    }
+    
     @PostMapping
     public ResponseEntity<ApiResponse<OrderResponse>> createOrder(@Valid @RequestBody OrderRequest request) {
+        System.out.println("Processing order request for payment method: " + request.getPaymentMethod());
         OrderResponse order = orderService.createOrder(request);
         return ResponseEntity.ok(ApiResponse.success("Order placed successfully", order));
     }
