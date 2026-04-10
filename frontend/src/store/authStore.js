@@ -91,7 +91,17 @@ export const useAuthStore = create(
 
       isAdmin: () => {
         const user = get().user;
-        return user?.roles?.includes('ADMIN') || false;
+        if (!user) return false;
+        
+        // Check roles set/array
+        const hasAdminRole = Array.isArray(user.roles) 
+          ? user.roles.includes('ADMIN') 
+          : user.roles?.ADMIN === true; // Handle object-based roles if any
+          
+        // Also check singular role property
+        const isPrimaryAdmin = user.role === 'ADMIN';
+        
+        return hasAdminRole || isPrimaryAdmin;
       },
     }),
     {

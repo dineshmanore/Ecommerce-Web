@@ -1,7 +1,8 @@
 import ScrollToTop from "./components/ScrollToTop";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
+import { useAuthStore } from './store/authStore';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import LoadingSpinner from './components/ui/LoadingSpinner';
@@ -31,8 +32,8 @@ const AdminOrderDetails = lazy(() => import('./pages/admin/OrderDetails'));
 const AdminUsers = lazy(() => import('./pages/admin/Users'));
 
 // Auth guards
-const ProtectedRoute = lazy(() => import('./components/auth/ProtectedRoute'));
-const AdminRoute = lazy(() => import('./components/auth/AdminRoute'));
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import AdminRoute from './components/auth/AdminRoute';
 
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
@@ -41,6 +42,14 @@ const PageLoader = () => (
 );
 
 function App() {
+  const { fetchProfile, isAuthenticated } = useAuthStore();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchProfile();
+    }
+  }, [isAuthenticated, fetchProfile]);
+
   return (
     <Router>
        <ScrollToTop />
